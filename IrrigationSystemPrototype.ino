@@ -12,3 +12,7 @@ int menuValue = 0;
 int currentStateCLK;
 int lastStateCLK;
 unsigned long lastButtonPress = 0;
+
+// Variables to menu function
+int selectedMenu = 0;
+int mainMenuValue = 0;
