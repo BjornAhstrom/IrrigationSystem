@@ -5,5 +5,6 @@ void setup() {
   lcdScreenSetup();
   rotaryEncoderSetup();
 
-  mainMenu();
+  //mainMenu();
+  startScreen();
 }

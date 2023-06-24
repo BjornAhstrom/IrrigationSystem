@@ -15,4 +15,6 @@ unsigned long lastButtonPress = 0;
 
 // Variables to menu function
 int selectedMenu = 0;
-int mainMenuValue = 0;
+
+// Main menu values
+int selectedMainMenuRow = 0;

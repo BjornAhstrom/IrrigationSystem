@@ -3,8 +3,9 @@ void menuSelecting(int val) {
 
   switch (selectedMenu) {
     case 0:
-      mainMenuValue = val;
-      changingMenuValue();
+      selectedMainMenuRow = val;
+      mainMenuSelection();
+
       break;
     case 1:
       break;
