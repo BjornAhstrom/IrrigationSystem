@@ -1,7 +1,7 @@
 void mainMenu() {
   selectedMenu = 0;
   menuValue = 0;
-  selectedMainMenuRow = 0;
+  //selectedMainMenuRow = 0;
   lcd.clear();
   /*lcd.clear();
     lcd.setCursor(2, 0);
@@ -17,9 +17,9 @@ void mainMenu() {
 }
 
 void mainMenuSelection() {
-  switch (selectedMainMenuRow) {
+  switch (menuValue) {
     case -1:
-      selectedMainMenuRow = 0;
+      //selectedMainMenuRow = 0;
       menuValue = 0;
       break;
     case 0:
@@ -73,7 +73,7 @@ void mainMenuSelection() {
       lcd.print("> Installningar     ");
       break;
     case 5:
-      selectedMainMenuRow = 4;
+      //selectedMainMenuRow = 4;
       menuValue = 4;
       break;
   }
@@ -89,13 +89,14 @@ void mainMenuExecutionAction() {
       Serial.println("Auto bevattning");
       break;
     case 2:
-      Serial.println("Datum och tid");
+      Serial.println("Manuell bevattning");
+      sprinklersMenu();
       break;
     case 3:
-      Serial.println("Installningar");
+      Serial.println("Datum och tid");
       break;
     case 4:
-      Serial.println("Manuell bevattning");
+      Serial.println("Installningar");
       break;
   }
 }
