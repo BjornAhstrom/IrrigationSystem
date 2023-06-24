@@ -18,3 +18,9 @@ int selectedMenu = 0;
 
 // Main menu values
 int selectedMainMenuRow = 0;
+
+
+// Surface variables
+bool ongoingSurface = true;
+bool irrigationAuto = true;
+int currentSurface = 1;
