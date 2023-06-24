@@ -1,86 +1,57 @@
 void mainMenu() {
   selectedMenu = 0;
+  selectedMainMenuRow = 0;
   menuValue = 0;
-  //selectedMainMenuRow = 0;
   lcd.clear();
-  /*lcd.clear();
-    lcd.setCursor(2, 0);
-    lcd.print("Manuell bevattning");
-    lcd.setCursor(2, 1);
-    lcd.print("Auto bevattning   ");
-    lcd.setCursor(2, 2);
-    lcd.print("Datum och tid     ");
-    lcd.setCursor(2, 3);
-    lcd.print("Installningar     ");*/
 
   mainMenuSelection();
 }
 
 void mainMenuSelection() {
-  switch (menuValue) {
-    case -1:
-      //selectedMainMenuRow = 0;
-      menuValue = 0;
-      break;
-    case 0:
-      lcd.setCursor(0, 0);
-      lcd.print("> Tillbaka          ");
-      lcd.setCursor(0, 1);
-      lcd.print("  Auto bevattning   ");
-      lcd.setCursor(0, 2);
-      lcd.print("  Manuell bevattning");
-      lcd.setCursor(0, 3);
-      lcd.print("  Datum och tid     ");
-      break;
-    case 1:
-      lcd.setCursor(0, 0);
-      lcd.print("  Tillbaka          ");
-      lcd.setCursor(0, 1);
-      lcd.print("> Auto bevattning   ");
-      lcd.setCursor(0, 2);
-      lcd.print("  Manuell bevattning");
-      lcd.setCursor(0, 3);
-      lcd.print("  Datum och tid     ");
-      break;
-    case 2:
-      lcd.setCursor(0, 0);
-      lcd.print("  Tillbaka          ");
-      lcd.setCursor(0, 1);
-      lcd.print("  Auto bevattning   ");
-      lcd.setCursor(0, 2);
-      lcd.print("> Manuell bevattning");
-      lcd.setCursor(0, 3);
-      lcd.print("  Datum och tid     ");
-      break;
-    case 3:
-      lcd.setCursor(0, 0);
-      lcd.print("  Tillbaka          ");
-      lcd.setCursor(0, 1);
-      lcd.print("  Auto bevattning   ");
-      lcd.setCursor(0, 2);
-      lcd.print("  Manuell bevattning");
-      lcd.setCursor(0, 3);
-      lcd.print("> Datum och tid     ");
-      break;
-    case 4:
-      lcd.setCursor(0, 0);
-      lcd.print("  Auto bevattning   ");
-      lcd.setCursor(0, 1);
-      lcd.print("  Manuell bevattning");
-      lcd.setCursor(0, 2);
-      lcd.print("  Datum och tid     ");
-      lcd.setCursor(0, 3);
-      lcd.print("> Installningar     ");
-      break;
-    case 5:
-      //selectedMainMenuRow = 4;
-      menuValue = 4;
-      break;
+
+  int startIndex = selectedMainMenuRow;
+  int endIndex = startIndex + screenRows;
+
+  if (endIndex > numOfMainMenuRows) {
+    endIndex = numOfMainMenuRows;
+    startIndex = endIndex - screenRows;
+  }
+
+  for (int i = startIndex; i < endIndex; i++) {
+    lcd.setCursor(0, i - startIndex);
+    if (i == selectedMainMenuRow) {
+
+      lcd.print(">");
+    } else {
+      lcd.print("  ");
+    }
+    lcd.setCursor(2, i - startIndex);
+    lcd.print(mainMenuItems[i]);
   }
 }
 
+void scrollMainMenuUpAndDown() {
+  if (selectedMainMenuRow < 0) {
+    selectedMainMenuRow = 0;
+  } else if (selectedMainMenuRow >= numOfMainMenuRows) {
+    selectedMainMenuRow = numOfMainMenuRows - 1;
+  }
+
+  // Update menuValue based on selected menu row
+  if (selectedMainMenuRow < menuValue) {
+    menuValue = selectedMainMenuRow;
+  } else if (selectedMainMenuRow >= menuValue + screenRows) {
+    menuValue = selectedMainMenuRow - screenRows + 1;
+  }
+
+  if (menuValue < 0) {
+    menuValue = 0;
+  }
+  mainMenuSelection();
+}
+
 void mainMenuExecutionAction() {
-  switch (menuValue) {
+  switch (selectedMainMenuRow) {
     case 0:
       selectedMenu = 1;
       startScreen();
@@ -89,7 +60,6 @@ void mainMenuExecutionAction() {
       Serial.println("Auto bevattning");
       break;
     case 2:
-      Serial.println("Manuell bevattning");
       sprinklersMenu();
       break;
     case 3:

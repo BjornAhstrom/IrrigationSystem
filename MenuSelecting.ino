@@ -3,8 +3,8 @@ void menuSelecting(int val) {
 
   switch (selectedMenu) {
     case 0:
-      //selectedMainMenuRow = val;
-      mainMenuSelection();
+      selectedMainMenuRow = val;
+      scrollMainMenuUpAndDown();
       break;
     case 1:
       selectedSprinkler = val;

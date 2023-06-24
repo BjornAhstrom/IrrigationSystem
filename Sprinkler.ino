@@ -44,7 +44,6 @@ void sprinkler() {
 void sprinklerMenuAction() {
   switch (menuValue) {
     case -1:
-      //selectSprinklerAction = 0;
       menuValue = 0;
       break;
     case 0:
@@ -78,7 +77,6 @@ void sprinklerMenuAction() {
       lcd.print("> Tillbaka");
       break;
     case 3:
-      //selectSprinklerAction = 2;
       menuValue = 2;
       break;
   }

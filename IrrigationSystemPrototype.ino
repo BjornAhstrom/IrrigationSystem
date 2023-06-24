@@ -5,6 +5,7 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define ON   0
 #define OFF  1
 
+int screenRows = 4;
 
 // Relay variables
 const int relays[] = {51, 52, 53, 54, 55};
@@ -18,7 +19,6 @@ int currentSelectedSprinkler = 0;
 
 const int maxSprinklers = 8;
 int numSprinklers =  numRelays + 1;
-int screenRows = 4;
 
 char* sprinklerNames[maxSprinklers] = {
   "Tillbaka         ",
@@ -30,8 +30,6 @@ char* sprinklerNames[maxSprinklers] = {
 
   // Add more sprinklers if needed
 };
-
-
 
 // Rotary encoder pin variables
 const int clk = 2;
@@ -48,8 +46,21 @@ unsigned long lastButtonPress = 0;
 int selectedMenu = 0;
 
 // Main menu values
-int selectedMainMenuRow = 0;
 bool insideMenu = false;
+const int maxMainMenuRows = 10;
+int numOfMainMenuRows = 5;
+int selectedMainMenuRow = 0;
+
+char* mainMenuItems[maxMainMenuRows] = {
+  "Tillbaka          ",
+  "Auto bevattning   ",
+  "Manuell bevattning",
+  "Datum och tid     ",
+  "Installningar     ",
+
+  // Add more menu items if needed
+};
+
 
 
 // Surface variables

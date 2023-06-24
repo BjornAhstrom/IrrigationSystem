@@ -36,7 +36,7 @@ void scrollMenuUpAndDown() {
     selectedSprinkler = numSprinklers - 1;
   }
 
-  // Uppdatera menuValue baserat på vald sprinkler
+  // Update menuValue based on selected sprinkler
   if (selectedSprinkler < menuValue) {
     menuValue = selectedSprinkler;
   } else if (selectedSprinkler >= menuValue + screenRows) {
@@ -50,7 +50,7 @@ void scrollMenuUpAndDown() {
 }
 
 void sprinklerMenuExecutionAction() {
-  if (menuValue == 0) {
+  if (selectedSprinkler == 0) {
     mainMenu();
   } else {
     sprinklerName = sprinklerNames[selectedSprinkler];
