@@ -18,6 +18,7 @@ int selectedMenu = 0;
 
 // Main menu values
 int selectedMainMenuRow = 0;
+bool insideMenu = false;
 
 
 // Surface variables

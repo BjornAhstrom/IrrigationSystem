@@ -83,7 +83,7 @@ void mainMenuExecutionAction() {
   switch (menuValue) {
     case 0:
       selectedMenu = 1;
-      mainMenu();
+      startScreen();
       break;
     case 1:
       Serial.println("Auto bevattning");

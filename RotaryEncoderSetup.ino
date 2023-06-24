@@ -20,25 +20,36 @@ void checkRotaryEncoderStatus() {
 
     // If the dt state is different than the clk state then the encoder is rotating ccw so decrement
     if (digitalRead(dt) != currentStateCLK) {
-      menuValue++;
-      
+      if (insideMenu) {
+        menuValue++;
+      }
     } else {
-      menuValue--;
+      if (insideMenu) {
+        menuValue--;
+      }
     }
     // Add menu selecting function here
-    menuSelecting(menuValue);
+    if (insideMenu) {
+        menuSelecting(menuValue);
+      }
   }
   lastStateCLK = currentStateCLK;
 
   int btnState = digitalRead(sw);
 
   // If detect LOW signal from button press
-  if(btnState == LOW) {
-    
+  if (btnState == LOW) {
+
     //If 50ms have passed since last LOW pulse, it means that the
     //button has been pressed, released and pressed again
-    if(millis() - lastButtonPress > 50) {
-      menuBtnPressSelecting();
+    if (millis() - lastButtonPress > 50) {
+      if (insideMenu) {
+        menuBtnPressSelecting();
+      } else {
+        insideMenu = true;
+        mainMenu();
+      }
+      
     }
 
     // Remember last button press

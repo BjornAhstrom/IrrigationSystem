@@ -1,4 +1,7 @@
 void startScreen() {
+  insideMenu = false;
+  
+  lcd.clear();
   lcd.setCursor(1, 0);
   lcd.print("16:44");
   lcd.setCursor(8, 0);
