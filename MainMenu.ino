@@ -57,10 +57,10 @@ void mainMenuExecutionAction() {
       startScreen();
       break;
     case 1:
-      Serial.println("Auto bevattning");
+      autoIrrigationMenu();
       break;
     case 2:
-      sprinklersMenu();
+      manuallIrrigationMenu();
       break;
     case 3:
       Serial.println("Datum och tid");

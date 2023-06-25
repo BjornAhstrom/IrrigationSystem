@@ -19,7 +19,7 @@ void sprinklerMenu() {
   for (int i = startIndex; i < endIndex; i++) {
     lcd.setCursor(0, i - startIndex);
     if (i == selectedSprinkler) {
-      
+
       lcd.print(">");
     } else {
       lcd.print("  ");
@@ -42,7 +42,7 @@ void scrollMenuUpAndDown() {
   } else if (selectedSprinkler >= menuValue + screenRows) {
     menuValue = selectedSprinkler - screenRows + 1;
   }
-  
+
   if (menuValue < 0) {
     menuValue = 0;
   }
@@ -51,7 +51,7 @@ void scrollMenuUpAndDown() {
 
 void sprinklerMenuExecutionAction() {
   if (selectedSprinkler == 0) {
-    mainMenu();
+    manuallIrrigationMenu();
   } else {
     sprinklerName = sprinklerNames[selectedSprinkler];
     currentSelectedSprinkler = selectedSprinkler - 1;

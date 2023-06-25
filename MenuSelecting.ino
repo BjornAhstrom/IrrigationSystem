@@ -15,8 +15,12 @@ void menuSelecting(int val) {
       sprinklerMenuAction();
       break;
     case 3:
+      selectedAutoRow = val;
+      scrollAutoIrrigationMenuUpAndDown();
       break;
     case 4:
+      selectedManRow = val;
+      scrollManuallIrrigationMenuUpAndDown();
       break;
   }
 }
@@ -32,11 +36,13 @@ void menuBtnPressSelecting() {
       sprinklerMenuExecutionAction();
       break;
     case 2:
-    sprinklerExecutionAction();
+      sprinklerExecutionAction();
       break;
     case 3:
+      autoIrrigationExecuteAction();
       break;
     case 4:
+      manuallIrrigationExecuteAction();
       break;
   }
 }

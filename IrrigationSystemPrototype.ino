@@ -6,6 +6,7 @@ LiquidCrystal_I2C lcd(0x27, 20, 4);
 #define OFF  1
 
 int screenRows = 4;
+const int maxMenuRows = 10;
 
 // Relay variables
 const int relays[] = {51, 52, 53, 54, 55};
@@ -47,11 +48,10 @@ int selectedMenu = 0;
 
 // Main menu values
 bool insideMenu = false;
-const int maxMainMenuRows = 10;
 int numOfMainMenuRows = 5;
 int selectedMainMenuRow = 0;
 
-char* mainMenuItems[maxMainMenuRows] = {
+char* mainMenuItems[maxMenuRows] = {
   "Tillbaka          ",
   "Auto bevattning   ",
   "Manuell bevattning",
@@ -61,7 +61,25 @@ char* mainMenuItems[maxMainMenuRows] = {
   // Add more menu items if needed
 };
 
+// Auto irrigation variables
+int numOfAutoMenuRows = 3;
+int selectedAutoRow = 0;
 
+char* autoIrrigationMenuItems[maxMenuRows] = {
+  "Tillbaka         ",
+  "Schem bevattning ",
+  "Full auto        ",
+};
+
+// Manuall irrigations variabels
+int numOfManuallMenuRows = 3;
+int selectedManRow = 0;
+
+char* manIrrigationMenuItems[maxMenuRows] = {
+  "Tillbaka         ",
+  "Valj spridare    ",
+  "Tidsbegransning  ",
+};
 
 // Surface variables
 bool ongoingSurface = true;
