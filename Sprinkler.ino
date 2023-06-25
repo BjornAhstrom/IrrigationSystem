@@ -97,9 +97,9 @@ void sprinklerExecutionAction() {
 }
 
 void startSprinkler(int relayPin) {
-  digitalWrite(relays[relayPin], HIGH);
+  digitalWrite(relays[relayPin], ON);
 }
 
 void stopSprinkler(int relayPin) {
-  digitalWrite(relays[relayPin], LOW);
+  digitalWrite(relays[relayPin], OFF);
 }

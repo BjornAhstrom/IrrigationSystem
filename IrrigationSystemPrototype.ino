@@ -1,12 +1,20 @@
 #include <Wire.h>
+
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 
-#define ON   0
-#define OFF  1
+#include <Time.h>
+#include <TimeLib.h>
+
+#define ON   1
+#define OFF  0
 
 int screenRows = 4;
 const int maxMenuRows = 10;
+
+// Clock variables
+int oldSecond = 0;
+char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"};
 
 // Relay variables
 const int relays[] = {51, 52, 53, 54, 55};
@@ -85,3 +93,30 @@ char* manIrrigationMenuItems[maxMenuRows] = {
 bool ongoingSurface = true;
 bool irrigationAuto = true;
 int currentSurface = 1;
+
+// Schematic irrigation variables
+
+// Kod för att sätta vilka dagar användaren vill köra spridarna på
+int scheduledTimeHour; // Tiden då spridarna ska gå igång HH
+int scheduledTimeMinute; // Tiden då spridarna ska gå igång MM
+unsigned long startTime; // Tiden då spridarna ska vara igång (i millisekunder)
+bool allDispensersOn = false; // Flagga för att indikera om spridarna är igång
+
+struct DaysToTurnOn {
+  bool sunday;
+  bool monday;
+  bool tuesday;
+  bool wednesday;
+  bool thursday;
+  bool friday;
+  bool saturday;
+};
+
+DaysToTurnOn daysToTurnOn = {false, false, false, false, false, false, false}; // Välj specifika dagar att starta spridarna på
+
+bool isScheduledTime() {
+  if (hour() == scheduledTimeHour && minute() == scheduledTimeMinute) {
+    return true;
+  }
+  return false;
+}
