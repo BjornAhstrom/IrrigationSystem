@@ -22,6 +22,34 @@ void menuSelecting(int val) {
       selectedManRow = val;
       scrollManuallIrrigationMenuUpAndDown();
       break;
+    case 5:
+      selectedTimeAndDateRow = val;
+      adjustTimeAndDateMenu();
+      break;
+    case 6:
+      currentHour = val;
+      hoursToAdjust();
+      break;
+    case 7:
+      currentMinute = val;
+      minutesToAdjust();
+      break;
+    case 8:
+      selectedDateRow = val;
+      adjustDateMenu();
+      break;
+    case 9:
+      currentYear = val;
+      yearToAdjust();
+      break;
+    case 10:
+      currentMonth = val;
+      monthToAdjust();
+      break;
+    case 11:
+      currentDay = val;
+      dayToAdjust();
+      break;
   }
 }
 
@@ -43,6 +71,29 @@ void menuBtnPressSelecting() {
       break;
     case 4:
       manuallIrrigationExecuteAction();
+      break;
+    case 5:
+      adjustTimeAndDateExecutionAction();
+      break;
+    case 6:
+      adjustMinnutes();
+      break;
+    case 7:
+      adjustTimeExecutionAction();
+      break;
+    case 8:
+      adjustDateExecutionAction();
+      //adjustYear();
+      break;
+    case 9:
+      adjustMonth();
+      break;
+    case 10:
+      adjustDay();
+      break;
+    case 11:
+      // Spara data
+      dateExecutionAction();
       break;
   }
 }

@@ -89,6 +89,25 @@ char* manIrrigationMenuItems[maxMenuRows] = {
   "Tidsbegransning  ",
 };
 
+// Time and date adjustment variables
+int selectedTimeAndDateRow = 0;
+int selectedDateRow = 0;
+bool timeIsBlinking = false;
+bool setNewTime = false;
+bool setNewMinute = false;
+bool setNewDate = false;
+bool setNewHour = false;
+bool setNewYear = false;
+bool setNewMonth = false;
+bool setNewDay = false;
+int currentHour = hour();
+int currentMinute = minute();
+int currentSecond = second();
+int currentYear = year();
+int currentMonth = month();
+int currentDay = day();
+unsigned long runTime = millis();
+
 // Surface variables
 bool ongoingSurface = true;
 bool irrigationAuto = true;

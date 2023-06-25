@@ -64,6 +64,7 @@ void mainMenuExecutionAction() {
       break;
     case 3:
       Serial.println("Datum och tid");
+      adjustTimeAndDate();
       break;
     case 4:
       Serial.println("Installningar");
