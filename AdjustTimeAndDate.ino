@@ -158,9 +158,30 @@ void showBlinkingTime() {
   minutesToAdjust();
 }
 
-void hideBlinkingTime() {
+void hideBlinkingTime() { 
+  if (currentHour < 10) {
     lcd.setCursor(0, 1);
-    lcd.print("                   ");
+    lcd.print(" ");
+    lcd.setCursor(1, 1);
+    lcd.print(" ");
+  } else {
+    lcd.setCursor(0, 1);
+    lcd.print("  ");
+  }
+
+  lcd.setCursor(2, 1);
+  lcd.print(":");
+
+  if (currentMinute < 10) {
+    lcd.setCursor(3, 1);
+    lcd.print(" ");
+    lcd.setCursor(4, 1);
+    lcd.print(" ");
+  } else {
+    lcd.setCursor(3, 1);
+    lcd.print("  ");
+  }
+
 }
 
 void startBlinkingTime() {
@@ -249,7 +270,8 @@ void adjustDateExecutionAction() {
 }
 
 void saveTimeAndDate() {
-  
+  setTime(currentHour, currentMinute, currentSecond, currentDay, currentMonth, currentYear);
+  startScreen();
 }
 
 void dateExecutionAction() {
@@ -312,7 +334,31 @@ void showBlinkingDate() {
 
 void hideBlinkingDate() {
   lcd.setCursor(0, 1);
-  lcd.print("                   ");
+  lcd.print("    ");
+  lcd.setCursor(4, 1);
+  lcd.print("/");
+
+  if (currentMonth < 10) {
+    lcd.setCursor(5, 1);
+    lcd.print(" ");
+    lcd.setCursor(6, 1);
+    lcd.print(" ");
+  } else {
+    lcd.setCursor(5, 1);
+    lcd.print("  ");
+  }
+
+  lcd.setCursor(7, 1);
+  lcd.print("/");
+  if (currentDay < 10) {
+    lcd.setCursor(8, 1);
+    lcd.print(" ");
+    lcd.setCursor(9, 1);
+    lcd.print(" ");
+  } else {
+    lcd.setCursor(8, 1);
+    lcd.print("  ");
+  }
 }
 
 void startBlinkingDate() {
@@ -390,7 +436,7 @@ void hideBlinkingDay() {
 void yearToAdjust() {
   lcd.setCursor(0, 1);
   lcd.print(currentYear);
-  
+
 }
 
 void monthToAdjust() {
@@ -428,8 +474,6 @@ void hoursToAdjust() {
     lcd.setCursor(0, 1);
     lcd.print(currentHour);
   }
-  //lcd.setCursor(2, 0);
-  //lcd.print(":");
 }
 
 void minutesToAdjust() {
@@ -443,8 +487,6 @@ void minutesToAdjust() {
     lcd.setCursor(3, 1);
     lcd.print(currentMinute);
   }
-  //lcd.setCursor(5, 0);
-  //lcd.print(":");
 }
 
 void secondsToAdjust() {
