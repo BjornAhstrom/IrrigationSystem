@@ -9,8 +9,6 @@ void digitalClockDisplay() {
     weekDay();
     oldSecond = second();
   }
-
-  
 }
 
 void weekDay() {

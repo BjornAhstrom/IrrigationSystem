@@ -50,6 +50,10 @@ void menuSelecting(int val) {
       currentDay = val;
       dayToAdjust();
       break;
+    case 12:
+      selectedSettingsRow = val;
+      scrollSettingsMenuUpAndDown();
+      break;
   }
 }
 
@@ -94,6 +98,9 @@ void menuBtnPressSelecting() {
     case 11:
       // Spara data
       dateExecutionAction();
+      break;
+    case 12:
+      settingsExecuteAction();
       break;
   }
 }

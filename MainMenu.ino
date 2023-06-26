@@ -68,6 +68,7 @@ void mainMenuExecutionAction() {
       break;
     case 4:
       Serial.println("Installningar");
+      settings();
       break;
   }
 }

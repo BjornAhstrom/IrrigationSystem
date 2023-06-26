@@ -89,6 +89,16 @@ char* manIrrigationMenuItems[maxMenuRows] = {
   "Tidsbegransning  ",
 };
 
+
+// Settings variables
+int numOfSettingsMenuRows = 2;
+int selectedSettingsRow = 0;
+
+char* settingsMenuItem[maxMenuRows] = {
+  "Tillbaka          ",
+  "Stall in procent  ",
+};
+
 // Time and date adjustment variables
 int selectedTimeAndDateRow = 0;
 int selectedDateRow = 0;
