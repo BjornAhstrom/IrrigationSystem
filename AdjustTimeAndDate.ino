@@ -100,6 +100,7 @@ void adjustTimeExecutionAction() {
 
 
 void hideBlinkingHour() {
+
   if (currentHour < 10) {
     lcd.setCursor(0, 1);
     lcd.print(" ");
@@ -126,6 +127,7 @@ void startBlinkingHour() {
 }
 
 void hideBlinkingMinute() {
+
   if (currentMinute < 10) {
     lcd.setCursor(3, 1);
     lcd.print(" ");
@@ -152,13 +154,14 @@ void startBlinkingMinute() {
 }
 
 void showBlinkingTime() {
+
   hoursToAdjust();
   lcd.setCursor(2, 1);
   lcd.print(":");
   minutesToAdjust();
 }
 
-void hideBlinkingTime() { 
+void hideBlinkingTime() {
   if (currentHour < 10) {
     lcd.setCursor(0, 1);
     lcd.print(" ");
@@ -465,6 +468,14 @@ void dayToAdjust() {
 
 void hoursToAdjust() {
 
+  if (currentHour > 23) {
+    currentHour = 0;
+    menuValue = 0;
+  }
+  else if (currentHour < 0) {
+    currentHour = 23;
+    menuValue = 23;
+  }
   if (currentHour < 10) {
     lcd.setCursor(0, 1);
     lcd.print("0");
@@ -477,6 +488,15 @@ void hoursToAdjust() {
 }
 
 void minutesToAdjust() {
+
+  if (currentMinute > 59) {
+    currentMinute = 0;
+    menuValue = 0;
+  }
+  else if (currentMinute < 0) {
+    currentMinute = 59;
+    menuValue = 59;
+  }
 
   if (currentMinute < 10) {
     lcd.setCursor(3, 1);
