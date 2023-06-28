@@ -54,6 +54,8 @@ void menuSelecting(int val) {
       selectedSettingsRow = val;
       scrollSettingsMenuUpAndDown();
       break;
+    case 13:
+      break;
   }
 }
 
@@ -101,6 +103,8 @@ void menuBtnPressSelecting() {
       break;
     case 12:
       settingsExecuteAction();
+      break;
+    case 13:
       break;
   }
 }
