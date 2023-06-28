@@ -7,6 +7,9 @@ void loop() {
   startBlinkingYear();
   startBlinkingMonth();
   startBlinkingDay();
+  activatIrrigationBlinkingTime();
+  activateBlinkingIrrigationHour();
+  activateBlinkingIrrigationMinute();
 
   if (!insideMenu) {
     digitalClockDisplay();

@@ -61,6 +61,7 @@ void autoIrrigationExecuteAction() {
       //setIrrigationHour();
       //setStartHour = true;
       Serial.println("Auto bevattning");
+      schedulingIrrigation();
       break;
     case 2:
 

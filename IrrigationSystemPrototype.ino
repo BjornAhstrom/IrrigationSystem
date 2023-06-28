@@ -124,6 +124,12 @@ bool irrigationAuto = true;
 int currentSurface = 1;
 
 // Schematic irrigation variables
+int selectedSetIrrigationTimeRow = 0;
+bool activateIrrigationTime = false;
+int currentIrrigationHour = 0;
+bool activateIrrigationHour = false;
+int currentIrrigationMinute = 0;
+bool activateIrrigationMinute = false;
 
 // Kod för att sätta vilka dagar användaren vill köra spridarna på
 int scheduledTimeHour; // Tiden då spridarna ska gå igång HH

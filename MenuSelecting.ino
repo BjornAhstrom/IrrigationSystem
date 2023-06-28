@@ -55,6 +55,26 @@ void menuSelecting(int val) {
       scrollSettingsMenuUpAndDown();
       break;
     case 13:
+      selectedSetIrrigationTimeRow = val;
+      setSchedulingIrrigationTime();
+      break;
+    case 14:
+      currentIrrigationHour = val;
+      showIrrigationHour();
+      break;
+    case 15:
+      currentIrrigationMinute = val;
+      showIrrigationMinute();
+      break;
+    case 16:
+      break;
+    case 17:
+      break;
+    case 18:
+      break;
+    case 19:
+      break;
+    case 20:
       break;
   }
 }
@@ -105,6 +125,22 @@ void menuBtnPressSelecting() {
       settingsExecuteAction();
       break;
     case 13:
+      schedulingIrrigationExecutionAction();
+      break;
+    case 14:
+      irrigationMinuteToSet();
+      break;
+    case 15:
+      break;
+    case 16:
+      break;
+    case 17:
+      break;
+    case 18:
+      break;
+    case 19:
+      break;
+    case 20:
       break;
   }
 }
