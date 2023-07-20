@@ -1,5 +1,5 @@
 void settings() {
-  lcd.clear();
+ // lcd.clear();
   selectedMenu = 12;
   selectedSettingsRow = 0;
   menuValue = 0;
@@ -8,8 +8,8 @@ void settings() {
 }
 
 void settingsMenu() {
-
-  int startIndex = selectedSettingsRow;
+    writeMenuOptions(settingsMenuItem, numOfSettingsMenuRows);
+  /*int startIndex = selectedSettingsRow;
   int endIndex = startIndex + screenRows;
 
   if (endIndex > numOfSettingsMenuRows) {
@@ -28,10 +28,10 @@ void settingsMenu() {
     }
     lcd.setCursor(2, i);
     lcd.print(settingsMenuItem[i]);
-  }
+  }*/
 }
 
-void scrollSettingsMenuUpAndDown() {
+/*void scrollSettingsMenuUpAndDown() {
   if (selectedSettingsRow < 0) {
     selectedSettingsRow = 0;
   } else if (selectedSettingsRow >= numOfSettingsMenuRows) {
@@ -49,7 +49,7 @@ void scrollSettingsMenuUpAndDown() {
     menuValue = 0;
   }
   settingsMenu();
-}
+}*/
 
 void settingsExecuteAction() {
 

@@ -2,14 +2,14 @@ void autoIrrigationMenu() {
   selectedMenu = 3;
   selectedAutoRow = 0;
   menuValue = 0;
-  lcd.clear();
+  //lcd.clear();
 
   autoIrrigationMenuSelection();
 }
 
 void autoIrrigationMenuSelection() {
 
-  int startIndex = selectedAutoRow;
+  /*int startIndex = selectedAutoRow;
   int endIndex = startIndex + screenRows;
 
   if (endIndex > numOfAutoMenuRows) {
@@ -28,10 +28,10 @@ void autoIrrigationMenuSelection() {
     }
     lcd.setCursor(2, i);
     lcd.print(autoIrrigationMenuItems[i]);
-  }
+  }*/
 }
 
-void scrollAutoIrrigationMenuUpAndDown() {
+/*void scrollAutoIrrigationMenuUpAndDown() {
   if (selectedAutoRow < 0) {
     selectedAutoRow = 0;
   } else if (selectedAutoRow >= numOfAutoMenuRows) {
@@ -49,7 +49,7 @@ void scrollAutoIrrigationMenuUpAndDown() {
     menuValue = 0;
   }
   autoIrrigationMenuSelection();
-}
+}*/
 
 void autoIrrigationExecuteAction() {
 

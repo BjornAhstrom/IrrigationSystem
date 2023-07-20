@@ -2,15 +2,15 @@ void schedulingIrrigation() {
   selectedMenu = 13;
   selectedSetIrrigationTimeRow = 0;
   menuValue = 0;
-  lcd.clear();
+  //lcd.clear();
 
-  lcd.setCursor(0, 0);
-  lcd.print(" Stall in starttid ");
+  //lcd.setCursor(0, 0);
+  //lcd.print(" Stall in starttid ");
   setSchedulingIrrigationTime();
 }
 
 void setSchedulingIrrigationTime() {
-  switch (selectedSetIrrigationTimeRow) {
+  /*switch (selectedSetIrrigationTimeRow) {
     case -1:
       selectedSetIrrigationTimeRow = 0;
       break;
@@ -44,7 +44,7 @@ void setSchedulingIrrigationTime() {
     case 3:
       selectedSetIrrigationTimeRow = 2;
       break;
-  }
+  }*/
 }
 
 void schedulingIrrigationExecutionAction() {
@@ -55,6 +55,7 @@ void schedulingIrrigationExecutionAction() {
       break;
     case 1:
       // Nästa
+      setIrrigationDays();
       break;
     case 2:
       mainMenu();

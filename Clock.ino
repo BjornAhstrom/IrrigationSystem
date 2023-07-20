@@ -1,5 +1,5 @@
 void digitalClockDisplay() {
-  if (oldSecond != second()) {
+  /*if (oldSecond != second()) {
     hoursToUpdate();
     minutesToUpdate();
     secondsToUpdate();
@@ -8,10 +8,10 @@ void digitalClockDisplay() {
     dayToUpdate();
     weekDay();
     oldSecond = second();
-  }
+  }*/
 }
 
-void weekDay() {
+/*void weekDay() {
   lcd.setCursor(9, 0);
   lcd.print(daysOfTheWeek[weekday() - 1]);
 }
@@ -90,4 +90,4 @@ void secondsToUpdate() {
     lcd.setCursor(6, 0);
     lcd.print(second());
   }
-}
+}*/

@@ -3,17 +3,17 @@ void adjustTimeAndDate() {
   menuValue = 0;
   selectedTimeAndDateRow = 0;
   setNewTime = true;
-  lcd.clear();
+  /*lcd.clear();
 
   lcd.setCursor(0, 0);
-  lcd.print("Stall in tiden");
+  lcd.print("Stall in tiden");*/
 
   adjustTimeAndDateMenu();
 }
 
 void adjustTimeAndDateMenu() {
 
-  switch (selectedTimeAndDateRow) {
+  /*switch (selectedTimeAndDateRow) {
     case -1:
       selectedTimeAndDateRow = 0;
       break;
@@ -48,7 +48,7 @@ void adjustTimeAndDateMenu() {
     case 3:
       selectedTimeAndDateRow = 2;
       break;
-  }
+  }*/
 }
 
 void adjustTimeAndDateExecutionAction() {
@@ -102,13 +102,13 @@ void adjustTimeExecutionAction() {
 void hideBlinkingHour() {
 
   if (currentHour < 10) {
-    lcd.setCursor(0, 1);
+    /*lcd.setCursor(0, 1);
     lcd.print(" ");
     lcd.setCursor(1, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(0, 1);
-    lcd.print("  ");
+    //lcd.setCursor(0, 1);
+    //lcd.print("  ");
   }
 }
 
@@ -129,13 +129,13 @@ void startBlinkingHour() {
 void hideBlinkingMinute() {
 
   if (currentMinute < 10) {
-    lcd.setCursor(3, 1);
+    /*lcd.setCursor(3, 1);
     lcd.print(" ");
     lcd.setCursor(4, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(3, 1);
-    lcd.print("  ");
+    //lcd.setCursor(3, 1);
+    //lcd.print("  ");
   }
 }
 
@@ -156,33 +156,33 @@ void startBlinkingMinute() {
 void showBlinkingTime() {
 
   hoursToAdjust();
-  lcd.setCursor(2, 1);
-  lcd.print(":");
+  //lcd.setCursor(2, 1);
+  //lcd.print(":");
   minutesToAdjust();
 }
 
 void hideBlinkingTime() {
   if (currentHour < 10) {
-    lcd.setCursor(0, 1);
+    /*lcd.setCursor(0, 1);
     lcd.print(" ");
     lcd.setCursor(1, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(0, 1);
-    lcd.print("  ");
+    //lcd.setCursor(0, 1);
+   // lcd.print("  ");
   }
 
-  lcd.setCursor(2, 1);
-  lcd.print(":");
+  //lcd.setCursor(2, 1);
+  //lcd.print(":");
 
   if (currentMinute < 10) {
-    lcd.setCursor(3, 1);
+    /*lcd.setCursor(3, 1);
     lcd.print(" ");
     lcd.setCursor(4, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(3, 1);
-    lcd.print("  ");
+    //lcd.setCursor(3, 1);
+    //lcd.print("  ");
   }
 
 }
@@ -207,17 +207,17 @@ void adjustDate() {
   menuValue = 0;
   selectedDateRow = 0;
   setNewDate = true;
-  lcd.clear();
+  //lcd.clear();
 
-  lcd.setCursor(0, 0);
-  lcd.print("Stall in datum");
+  //lcd.setCursor(0, 0);
+ // lcd.print("Stall in datum");
 
   adjustDateMenu();
 }
 
 void adjustDateMenu() {
 
-  switch (selectedDateRow) {
+  /*switch (selectedDateRow) {
     case -1:
       selectedDateRow = 0;
       break;
@@ -254,7 +254,7 @@ void adjustDateMenu() {
     case 3:
       selectedDateRow = 2;
       break;
-  }
+  }*/
 }
 
 void adjustDateExecutionAction() {
@@ -273,7 +273,7 @@ void adjustDateExecutionAction() {
 }
 
 void saveTimeAndDate() {
-  setTime(currentHour, currentMinute, currentSecond, currentDay, currentMonth, currentYear);
+  //setTime(currentHour, currentMinute, currentSecond, currentDay, currentMonth, currentYear);
   startScreen();
 }
 
@@ -327,40 +327,40 @@ void adjustDay() {
 
 void showBlinkingDate() {
   yearToAdjust();
-  lcd.setCursor(4, 1);
-  lcd.print("/");
+  //lcd.setCursor(4, 1);
+  //lcd.print("/");
   monthToAdjust();
-  lcd.setCursor(7, 1);
-  lcd.print("/");
+  //lcd.setCursor(7, 1);
+  //lcd.print("/");
   dayToAdjust();
 }
 
 void hideBlinkingDate() {
-  lcd.setCursor(0, 1);
+  /*lcd.setCursor(0, 1);
   lcd.print("    ");
   lcd.setCursor(4, 1);
-  lcd.print("/");
+  lcd.print("/");*/
 
   if (currentMonth < 10) {
-    lcd.setCursor(5, 1);
+    /*lcd.setCursor(5, 1);
     lcd.print(" ");
     lcd.setCursor(6, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(5, 1);
-    lcd.print("  ");
+    //lcd.setCursor(5, 1);
+    //lcd.print("  ");
   }
 
-  lcd.setCursor(7, 1);
-  lcd.print("/");
+  //lcd.setCursor(7, 1);
+  //lcd.print("/");
   if (currentDay < 10) {
-    lcd.setCursor(8, 1);
+    /*lcd.setCursor(8, 1);
     lcd.print(" ");
     lcd.setCursor(9, 1);
-    lcd.print(" ");
+    lcd.print(" ");*/
   } else {
-    lcd.setCursor(8, 1);
-    lcd.print("  ");
+    //lcd.setCursor(8, 1);
+    //lcd.print("  ");
   }
 }
 
@@ -393,8 +393,8 @@ void startBlinkingYear() {
 }
 
 void hideBlinkingYear() {
-  lcd.setCursor(0, 1);
-  lcd.print("    ");
+  //lcd.setCursor(0, 1);
+  //lcd.print("    ");
 }
 
 void startBlinkingMonth() {
@@ -412,8 +412,8 @@ void startBlinkingMonth() {
 }
 
 void hideBlinkingMonth() {
-  lcd.setCursor(5, 1);
-  lcd.print("  ");
+  //lcd.setCursor(5, 1);
+  //lcd.print("  ");
 }
 
 void startBlinkingDay() {
@@ -431,38 +431,38 @@ void startBlinkingDay() {
 }
 
 void hideBlinkingDay() {
-  lcd.setCursor(8, 1);
-  lcd.print("  ");
+  //lcd.setCursor(8, 1);
+  //lcd.print("  ");
 }
 
 
 void yearToAdjust() {
-  lcd.setCursor(0, 1);
-  lcd.print(currentYear);
+  //lcd.setCursor(0, 1);
+  //lcd.print(currentYear);
 
 }
 
 void monthToAdjust() {
   if (currentMonth < 10) {
-    lcd.setCursor(5, 1);
+    /*lcd.setCursor(5, 1);
     lcd.print("0");
     lcd.setCursor(6, 1);
-    lcd.print(currentMonth);
+    lcd.print(currentMonth);*/
   } else {
-    lcd.setCursor(5, 1);
-    lcd.print(currentMonth);
+    //lcd.setCursor(5, 1);
+    //lcd.print(currentMonth);
   }
 }
 
 void dayToAdjust() {
   if (currentDay < 10) {
-    lcd.setCursor(8, 1);
+    /*lcd.setCursor(8, 1);
     lcd.print("0");
     lcd.setCursor(9, 1);
-    lcd.print(currentDay);
+    lcd.print(currentDay);*/
   } else {
-    lcd.setCursor(8, 1);
-    lcd.print(currentDay);
+    //lcd.setCursor(8, 1);
+    //lcd.print(currentDay);
   }
 }
 
@@ -477,13 +477,13 @@ void hoursToAdjust() {
     menuValue = 23;
   }
   if (currentHour < 10) {
-    lcd.setCursor(0, 1);
+    /*lcd.setCursor(0, 1);
     lcd.print("0");
     lcd.setCursor(1, 1);
-    lcd.print(currentHour);
+    lcd.print(currentHour);*/
   } else {
-    lcd.setCursor(0, 1);
-    lcd.print(currentHour);
+    //lcd.setCursor(0, 1);
+    //lcd.print(currentHour);
   }
 }
 
@@ -499,25 +499,25 @@ void minutesToAdjust() {
   }
 
   if (currentMinute < 10) {
-    lcd.setCursor(3, 1);
+    /*lcd.setCursor(3, 1);
     lcd.print("0");
     lcd.setCursor(4, 1);
-    lcd.print(currentMinute);
+    lcd.print(currentMinute);*/
   } else {
-    lcd.setCursor(3, 1);
-    lcd.print(currentMinute);
+    //lcd.setCursor(3, 1);
+    //lcd.print(currentMinute);
   }
 }
 
 void secondsToAdjust() {
 
-  if (second() < 10) {
-    lcd.setCursor(6, 0);
+  //if (second < 10) {
+    /*lcd.setCursor(6, 0);
     lcd.print("0");
     lcd.setCursor(7, 0);
-    lcd.print(second());
-  } else {
-    lcd.setCursor(6, 0);
-    lcd.print(second());
-  }
+    lcd.print(second());*/
+  //} else {
+    //lcd.setCursor(6, 0);
+    //lcd.print(second());
+  //}
 }

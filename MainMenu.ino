@@ -2,14 +2,17 @@ void mainMenu() {
   selectedMenu = 0;
   selectedMainMenuRow = 0;
   menuValue = 0;
-  lcd.clear();
+  //lcd.clear();
+  
+  tft.println("Meny");
+  tft.fillRect(20, 28, 280, 2, MAGENTA);
 
   mainMenuSelection();
 }
 
 void mainMenuSelection() {
-
-  int startIndex = selectedMainMenuRow;
+  writeMenuOptions(mainMenuItems, numOfMainMenuRows);
+  /*int startIndex = selectedMainMenuRow;
   int endIndex = startIndex + screenRows;
 
   if (endIndex > numOfMainMenuRows) {
@@ -27,10 +30,10 @@ void mainMenuSelection() {
     }
     lcd.setCursor(2, i - startIndex);
     lcd.print(mainMenuItems[i]);
-  }
+  }*/
 }
 
-void scrollMainMenuUpAndDown() {
+/*void scrollMainMenuUpAndDown() {
   if (selectedMainMenuRow < 0) {
     selectedMainMenuRow = 0;
   } else if (selectedMainMenuRow >= numOfMainMenuRows) {
@@ -48,7 +51,7 @@ void scrollMainMenuUpAndDown() {
     menuValue = 0;
   }
   mainMenuSelection();
-}
+}*/
 
 void mainMenuExecutionAction() {
   switch (selectedMainMenuRow) {

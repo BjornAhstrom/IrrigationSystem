@@ -2,13 +2,14 @@ void sprinklersMenu() {
   selectedMenu = 1;
   selectedSprinkler = 0;
   menuValue = 0;
-  lcd.clear();
+  //lcd.clear();
 
   sprinklerMenu();
 }
 
 void sprinklerMenu() {
-  int startIndex = selectedSprinkler;
+  writeMenuOptions(sprinklerNames, numSprinklers);
+  /*int startIndex = selectedSprinkler;
   int endIndex = startIndex + screenRows;
 
   if (endIndex > numSprinklers) {
@@ -26,10 +27,10 @@ void sprinklerMenu() {
     }
     lcd.setCursor(2, i - startIndex);
     lcd.print(sprinklerNames[i]);
-  }
+  }*/
 }
 
-void scrollMenuUpAndDown() {
+/*void scrollMenuUpAndDown() {
   if (selectedSprinkler < 0) {
     selectedSprinkler = 0;
   } else if (selectedSprinkler >= numSprinklers) {
@@ -47,7 +48,7 @@ void scrollMenuUpAndDown() {
     menuValue = 0;
   }
   sprinklerMenu();
-}
+}*/
 
 void sprinklerMenuExecutionAction() {
   if (selectedSprinkler == 0) {

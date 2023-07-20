@@ -4,11 +4,11 @@ void menuSelecting(int val) {
   switch (selectedMenu) {
     case 0:
       selectedMainMenuRow = val;
-      scrollMainMenuUpAndDown();
+      //scrollMainMenuUpAndDown();
       break;
     case 1:
       selectedSprinkler = val;
-      scrollMenuUpAndDown();
+      //scrollMenuUpAndDown();
       break;
     case 2:
       //selectSprinklerAction = val;
@@ -16,22 +16,22 @@ void menuSelecting(int val) {
       break;
     case 3:
       selectedAutoRow = val;
-      scrollAutoIrrigationMenuUpAndDown();
+      //scrollAutoIrrigationMenuUpAndDown();
       break;
     case 4:
       selectedManRow = val;
-      scrollManuallIrrigationMenuUpAndDown();
+      //scrollManuallIrrigationMenuUpAndDown();
       break;
     case 5:
       selectedTimeAndDateRow = val;
       adjustTimeAndDateMenu();
       break;
     case 6:
-      currentHour = val;
+      //currentHour = val;
       hoursToAdjust();
       break;
     case 7:
-      currentMinute = val;
+      //currentMinute = val;
       minutesToAdjust();
       break;
     case 8:
@@ -52,7 +52,7 @@ void menuSelecting(int val) {
       break;
     case 12:
       selectedSettingsRow = val;
-      scrollSettingsMenuUpAndDown();
+      //scrollSettingsMenuUpAndDown();
       break;
     case 13:
       selectedSetIrrigationTimeRow = val;
@@ -67,8 +67,12 @@ void menuSelecting(int val) {
       showIrrigationMinute();
       break;
     case 16:
+      selectedIrrigationDay = val;
+      irrigationDaysMenuSelection();
       break;
     case 17:
+      selectedTimeLimitSprinkler = val;
+      //scrollTimeLimitSprinklerUpAndDown();
       break;
     case 18:
       break;
@@ -131,10 +135,13 @@ void menuBtnPressSelecting() {
       irrigationMinuteToSet();
       break;
     case 15:
+      irrigationTimeFinnished();
       break;
     case 16:
+      selectedDayExecutionAction();
       break;
     case 17:
+    timeLimitSprinklerMenuExecutionAction();
       break;
     case 18:
       break;

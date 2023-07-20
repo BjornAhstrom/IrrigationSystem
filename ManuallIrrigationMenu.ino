@@ -2,14 +2,14 @@ void manuallIrrigationMenu() {
   selectedMenu = 4;
   selectedManRow = 0;
   menuValue = 0;
-  lcd.clear();
+  //lcd.clear();
 
   manuallIrrigationMenuSelection();
 }
 
 void manuallIrrigationMenuSelection() {
 
-  int startIndex = selectedManRow;
+  /*int startIndex = selectedManRow;
   int endIndex = startIndex + screenRows;
 
   if (endIndex > numOfManuallMenuRows) {
@@ -28,10 +28,10 @@ void manuallIrrigationMenuSelection() {
     }
     lcd.setCursor(2, i);
     lcd.print(manIrrigationMenuItems[i]);
-  }
+  }*/
 }
 
-void scrollManuallIrrigationMenuUpAndDown() {
+/*void scrollManuallIrrigationMenuUpAndDown() {
   if (selectedManRow < 0) {
     selectedManRow = 0;
   } else if (selectedManRow >= numOfManuallMenuRows) {
@@ -49,7 +49,7 @@ void scrollManuallIrrigationMenuUpAndDown() {
     menuValue = 0;
   }
   manuallIrrigationMenuSelection();
-}
+}*/
 
 void manuallIrrigationExecuteAction() {
 
@@ -62,6 +62,7 @@ void manuallIrrigationExecuteAction() {
       break;
     case 2:
       Serial.println("Tidsbegränsning");
+      timeLimitSprinkler();
       break;
   }
 }

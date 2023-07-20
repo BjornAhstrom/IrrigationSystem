@@ -1,13 +1,14 @@
 void startScreen() {
   insideMenu = false;
+
   
-  lcd.clear();
+  //lcd.clear();
   /*lcd.setCursor(0, 0);
   lcd.print("");
   lcd.setCursor(9, 0);
   lcd.print("Tors 06/24");*/
 
-  lcd.setCursor(0, 1);
+  /*lcd.setCursor(0, 1);
   lcd.print("Bevattning: ");
 
   if (irrigationAuto) {
@@ -28,5 +29,5 @@ void startScreen() {
   } else {
     lcd.setCursor(0, 2);
     lcd.print("Bevattning avstangd");
-  }
+  }*/
 }

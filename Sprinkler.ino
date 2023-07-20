@@ -1,7 +1,7 @@
 void sprinkler() {
   selectedMenu = 2;
   menuValue = 0;
-  lcd.clear();
+//  lcd.clear();
 
   /*lcd.setCursor(0, 2);
     lcd.print("Fuktighet: ");
@@ -42,7 +42,7 @@ void sprinkler() {
 }
 
 void sprinklerMenuAction() {
-  switch (menuValue) {
+  /*switch (menuValue) {
     case -1:
       menuValue = 0;
       break;
@@ -79,7 +79,7 @@ void sprinklerMenuAction() {
     case 3:
       menuValue = 2;
       break;
-  }
+  }*/
 }
 
 void sprinklerExecutionAction() {
