@@ -41,6 +41,8 @@ Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 #define MAGENTA 0xF81F
 #define YELLOW 0xFFE0
 #define WHITE  0xFFFF
+#define GRAY  0xc658
+#define LIGHTGRAY 0xf7be
 
 #define MINPRESSURE 10
 #define MAXPRESSURE 1000
@@ -48,9 +50,9 @@ Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 RTC_DS3231 rtc;
 
 // Rotary encoder pin variables
-const int clk = 21;
-const int dt = 20 ;
-const int sw = 19;
+const int clk = 53;
+const int dt = 52 ;
+const int sw = 51;
 
 // Rotary encoder  variables
 int menuValue = 0;
@@ -66,6 +68,22 @@ const int maxMenuRows = 10;
 
 // Clock variables
 int oldSecond = 0;
+int oldMinute = 0;
+int oldHour = 0;
+
+// Date variables
+int year;
+int month;
+int day;
+int oldDay;
+int oldMonth;
+int oldYear;
+
+// Clock variabels
+int hours;
+int minutes;
+int seconds;
+
 char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"};
 
 // Relay variables
@@ -165,17 +183,6 @@ int currentYear = 0;
 int currentMonth = 0;
 int currentDay = 0;
 unsigned long runTime = millis();
-
-// Date variables
-int year;
-int month;
-int day;
-int oldDay;
-
-// Clock variabels
-int hours;
-int minutes;
-int seconds;
 
 // Surface variables
 bool ongoingSurface = true;

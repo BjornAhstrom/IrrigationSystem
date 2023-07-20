@@ -5,6 +5,6 @@ void tftScreenSetup() {
 
   tft.setTextColor(WHITE);
   tft.setTextSize(2);
-  tft.fillScreen(BLACK);
+  tft.fillScreen(GRAY);
   tft.setCursor(120, 10);
 }

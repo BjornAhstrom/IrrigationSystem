@@ -1,93 +1,138 @@
 void digitalClockDisplay() {
-  /*if (oldSecond != second()) {
-    hoursToUpdate();
-    minutesToUpdate();
-    secondsToUpdate();
-    //yearToUpdate();
-    monthToUpdate();
-    dayToUpdate();
-    weekDay();
-    oldSecond = second();
-  }*/
+  tft.setTextColor(WHITE);
+
+  DateTime now = rtc.now();
+
+  oldSecond = seconds;
+  oldMinute = minutes;
+  oldHour = hours;
+
+  hours = now.hour();
+  minutes = now.minute();
+  seconds = now.second();
+
+  if (hours != oldHour) {
+    setHours(hours);
+    updateDate();
+  }
+
+  tft.setTextSize(3);
+  tft.setCursor(29, 6);
+  tft.println(":");
+
+  if (minutes != oldMinute) {
+    setMinutes(minutes);
+  }
+
+  tft.setTextSize(3);
+  tft.setCursor(64, 6);
+  tft.println(":");
+
+  if (seconds != oldSecond) {
+    setSeconds(seconds);
+  }
+
 }
 
-/*void weekDay() {
-  lcd.setCursor(9, 0);
-  lcd.print(daysOfTheWeek[weekday() - 1]);
-}
-
-void yearToUpdate() {
-  lcd.setCursor(0, 1);
-  lcd.print(year());
-  lcd.setCursor(4, 1);
-  lcd.print("/");
-}
-
-void monthToUpdate() {
-  if (month() < 10) {
-    lcd.setCursor(17, 0);
-    lcd.print("0");
-    lcd.setCursor(18, 0);
-    lcd.print(month());
+void setHours(int hour) {
+  tft.setTextSize(2);
+  if (hour < 10) {
+    tft.fillRect(10, 10, 27, 20, GRAY);
+    tft.setCursor(10, 10);
+    tft.println("0");
+    tft.setCursor(22, 10);
+    tft.println(hours);
   } else {
-    lcd.setCursor(17, 0);
-    lcd.print(month());
+    tft.fillRect(10, 10, 27, 20, GRAY);
+    tft.setCursor(10, 10);
+    tft.println(hours);
   }
 }
 
-void dayToUpdate() {
-  if (day() < 10) {
-    lcd.setCursor(14, 0);
-    lcd.print("0");
-    lcd.setCursor(15, 0);
-    lcd.print(day());
+void setMinutes(int min) {
+  tft.setTextSize(2);
+  if (min < 10) {
+    tft.fillRect(44, 10, 27, 20, GRAY);
+    tft.setCursor(44, 10);
+    tft.println("0");
+    tft.setCursor(57, 10);
+    tft.println(minutes);
   } else {
-    lcd.setCursor(14, 0);
-    lcd.print(day());
+    tft.fillRect(44, 10, 27, 20, GRAY);
+    tft.setCursor(44, 10);
+    tft.println(minutes);
   }
-  lcd.setCursor(16, 0);
-  lcd.print("/");
+
 }
 
-void hoursToUpdate() {
-
-  if (hour() < 10) {
-    lcd.setCursor(0, 0);
-    lcd.print("0");
-    lcd.setCursor(1, 0);
-    lcd.print(hour());
+void setSeconds(int sec) {
+  tft.setTextSize(2);
+  if (sec < 10) {
+    tft.fillRect(80, 10, 27, 20, GRAY);
+    tft.setCursor(80, 10);
+    tft.println("0");
+    tft.setCursor(94, 10);
+    tft.println(seconds);
   } else {
-    lcd.setCursor(0, 0);
-    lcd.print(hour());
+    tft.fillRect(80, 10, 27, 20, GRAY);
+    tft.setCursor(80, 10);
+    tft.println(seconds);
   }
-  lcd.setCursor(2, 0);
-  lcd.print(":");
 }
 
-void minutesToUpdate() {
+void updateDate() {
+  DateTime now = rtc.now();
 
-  if (minute() < 10) {
-    lcd.setCursor(3, 0);
-    lcd.print("0");
-    lcd.setCursor(4, 0);
-    lcd.print(minute());
-  } else {
-    lcd.setCursor(3, 0);
-    lcd.print(minute());
-  }
-  lcd.setCursor(5, 0);
-  lcd.print(":");
+  oldYear = year ;
+  oldMonth = month;
+  oldDay = day;
+
+  year = now.year();
+  month = now.month();
+  day = now.day();
+
+  tft.fillRect(140, 10, 280, 20, GRAY);
+
+  setYear(year);
+  setMonth(month);
+  setDay(day);
+  setDayName(now);
 }
 
-void secondsToUpdate() {
+void setYear(int ye) {
+  tft.setTextSize(2);
+  tft.setCursor(120, 10);
+  tft.println(ye);
+}
 
-  if (second() < 10) {
-    lcd.setCursor(6, 0);
-    lcd.print("0");
-    lcd.setCursor(7, 0);
-    lcd.print(second());
+void setMonth(int mon) {
+  tft.setTextSize(2);
+  if (mon < 10) {
+    tft.setCursor(180, 10);
+    tft.println("0");
+    tft.setCursor(193, 10);
+    tft.println(mon);
   } else {
-    lcd.setCursor(6, 0);
-    lcd.print(second());
+    tft.setCursor(180, 10);
+    tft.println(mon);
   }
-}*/
+}
+
+void setDay(int da) {
+  tft.setTextSize(2);
+  if (da < 10) {
+    tft.setCursor(215, 10);
+    tft.println("0");
+    tft.setCursor(228, 10);
+    tft.println(da);
+  } else {
+    tft.setCursor(215, 10);
+    tft.println(da);
+  }
+}
+
+void setDayName(DateTime now) {
+  tft.setTextSize(2);
+  tft.setCursor(250, 10);
+  tft.println(daysOfTheWeek[now.dayOfTheWeek()]);
+}

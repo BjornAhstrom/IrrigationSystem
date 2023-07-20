@@ -3,7 +3,8 @@ void mainMenu() {
   selectedMainMenuRow = 0;
   menuValue = 0;
   //lcd.clear();
-  
+  tft.fillScreen(BLACK);
+  tft.setCursor(120, 10);
   tft.println("Meny");
   tft.fillRect(20, 28, 280, 2, MAGENTA);
 
