@@ -11,6 +11,15 @@ void digitalClockDisplay() {
   minutes = now.minute();
   seconds = now.second();
 
+  if (runTimeAndDateOnes) {
+    setHours(hours);
+    setMinutes(minutes);
+    setSeconds(seconds);
+    updateDate();
+
+    runTimeAndDateOnes = false;
+  }
+
   if (hours != oldHour) {
     setHours(hours);
     updateDate();

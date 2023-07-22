@@ -22,16 +22,28 @@ void checkRotaryEncoderStatus() {
     if (digitalRead(dt) != currentStateCLK) {
       if (insideMenu) {
         menuValue++;
+      } else if (insideStartScreen) {
+        selectStartScreenProgram++;
+        if (selectStartScreenProgram > 2) {
+          selectStartScreenProgram = 0;
+        }
       }
     } else {
       if (insideMenu) {
         menuValue--;
+      } else if (insideStartScreen) {
+        selectStartScreenProgram--;
+        if (selectStartScreenProgram < 0) {
+          selectStartScreenProgram = 2;
+        }
       }
     }
     // Add menu selecting function here
     if (insideMenu) {
-        menuSelecting(menuValue);
-      }
+      menuSelecting(menuValue);
+    } else if (insideStartScreen) {
+      displayProgram();
+    }
   }
   lastStateCLK = currentStateCLK;
 
@@ -43,13 +55,18 @@ void checkRotaryEncoderStatus() {
     //If 50ms have passed since last LOW pulse, it means that the
     //button has been pressed, released and pressed again
     if (millis() - lastButtonPress > 50) {
-      if (insideMenu) {
+
+      
+      menuBtnPressSelecting();
+      /*if (insideMenu) {
         menuBtnPressSelecting();
+        Serial.println("Main menu press 1");
       } else {
         insideMenu = true;
         mainMenu();
-      }
-      
+        Serial.println("Main menu press 2");
+      }*/
+
     }
 
     // Remember last button press

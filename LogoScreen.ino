@@ -1,5 +1,5 @@
 void logoScreen() {
-  insideMenu = true;
+  //insideMenu = true;
   startScreen();
 
   /*for (int i = 0; i < 3; i++) {

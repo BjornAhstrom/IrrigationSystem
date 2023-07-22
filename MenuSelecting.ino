@@ -3,8 +3,22 @@ void menuSelecting(int val) {
 
   switch (selectedMenu) {
     case 0:
-      selectedMainMenuRow = val;
+      //selectedMainMenuRow = val;
       //scrollMainMenuUpAndDown();
+
+      if (menuValue > mainMenuOptions - 1) {
+        menuValue = 0;
+        mainMenuValue = menuValue;
+        mainMenuSelection();
+      }
+      else if (menuValue < 0) {
+        menuValue = mainMenuOptions - 1;
+        mainMenuValue = menuValue;
+        mainMenuSelection();
+      } else {
+        mainMenuValue = menuValue;
+        mainMenuSelection();
+      }
       break;
     case 1:
       selectedSprinkler = val;
@@ -15,7 +29,20 @@ void menuSelecting(int val) {
       sprinklerMenuAction();
       break;
     case 3:
-      selectedAutoRow = val;
+      //selectedAutoRow = val;
+      if (menuValue > autoMenuOptions - 1) {
+        menuValue = 0;
+        selectedAutoRow = menuValue;
+        autoIrrigationMenuSelection();
+      }
+      else if (menuValue < 0) {
+        menuValue = autoMenuOptions - 1;
+        selectedAutoRow = menuValue;
+        autoIrrigationMenuSelection();
+      } else {
+        selectedAutoRow = menuValue;
+        autoIrrigationMenuSelection();
+      }
       //scrollAutoIrrigationMenuUpAndDown();
       break;
     case 4:
@@ -86,8 +113,11 @@ void menuSelecting(int val) {
 
 void menuBtnPressSelecting() {
 
+  Serial.println("inside menuBtnPressSelecting()");
+
   switch (selectedMenu) {
     case 0:
+      Serial.print("mainMenuExecutionAction()");
       mainMenuExecutionAction();
       break;
     case 1:
@@ -141,7 +171,7 @@ void menuBtnPressSelecting() {
       selectedDayExecutionAction();
       break;
     case 17:
-    timeLimitSprinklerMenuExecutionAction();
+      timeLimitSprinklerMenuExecutionAction();
       break;
     case 18:
       break;

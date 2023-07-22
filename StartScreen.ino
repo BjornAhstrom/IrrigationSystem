@@ -1,29 +1,24 @@
 void startScreen() {
+  insideMenu = false;
+  insideStartScreen = true;
+  runTimeAndDateOnes = true;
+  
   tft.fillScreen(GRAY);
   tft.setTextSize(3);
-  insideMenu = false;
 
-   tft.fillRect(0, 32, 320, 2, BLACK);
+  tft.fillRect(0, 32, 320, 2, BLACK);
+  displayProgram();
 
-   // Left box
-   tft.fillRoundRect(50, 47, 51, 37, 3, BLACK);
-   tft.fillRoundRect(52, 49, 47, 33, 3, GRAY);
-   tft.setCursor(60, 54);
-   tft.println("P1");
-   
-   // Middle box
-   tft.fillRoundRect(135, 47, 51, 37, 3, LIGHTGRAY);
-   tft.fillRoundRect(137, 49, 47, 33, 3, GRAY);
-   tft.setTextColor(LIGHTGRAY);
-   tft.setCursor(145, 54);
-   tft.println("P2");
+  tft.fillRect(0, 83, 320, 2, BLACK);
 
-   // Right box
-   tft.fillRoundRect(220, 47, 51, 37, 3, LIGHTGRAY);
-   tft.fillRoundRect(222, 49, 47, 33, 3, GRAY);
-   tft.setTextColor(LIGHTGRAY);
-   tft.setCursor(230, 54);
-   tft.println("P3");
+  startTimerClockIcon(10, 88);
+  hourglassIcon(10, 130);
 
-   tft.fillRect(0, 90, 320, 2, BLACK);
+  hourglassIcon(10, 172);
+
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2);
+  tft.setCursor(55, 180);
+  tft.println("Mo Tu We Th Fr Sa Su");
+
 }

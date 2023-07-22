@@ -1,6 +1,6 @@
 void loop() {
   checkRotaryEncoderStatus();
-  menuBtnPress();
+  
   startBlinkingTime();
   startBlinkingHour();
   startBlinkingMinute();
@@ -14,17 +14,18 @@ void loop() {
 
   if (!insideMenu) {
     digitalClockDisplay();
+    menuBtnPress();
   }
-  
+
 }
 
 
 void menuBtnPress() {
 
   if (!digitalRead(sw) == HIGH) {
-    //insideMenu = 1;
+    insideStartScreen = false;
+    insideMenu = true;
     mainMenu();
-    Serial.println("BUTTON PRESS!!!");
     delay(100);
     while (!digitalRead(sw));
   }

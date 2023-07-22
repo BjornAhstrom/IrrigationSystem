@@ -95,6 +95,7 @@ int selectedSprinkler = 0;
 int selectSprinklerAction = 0;
 String sprinklerName = "";
 int currentSelectedSprinkler = 0;
+bool sprinklerTimerIsOn = false;
 
 // Time limit sprinkler variables
 int selectedTimeLimitSprinkler = 0;
@@ -117,9 +118,9 @@ char* sprinklerNames[] = {
 int selectedMenu = 0;
 
 // Main menu values
-bool insideMenu = false;
-int numOfMainMenuRows = 4;
-int selectedMainMenuRow = 0;
+
+//int numOfMainMenuRows = 4;
+//int selectedMainMenuRow = 0;
 
 char* mainMenuItems[] = {
   "Tillbaka          ",
@@ -131,15 +132,19 @@ char* mainMenuItems[] = {
   // Add more menu items if needed
 };
 
-// Auto irrigation variables
-int numOfAutoMenuRows = 3;
-int selectedAutoRow = 0;
+bool insideMenu = false;
+int mainMenuValue = 0;
+int mainMenuOptions = sizeof(mainMenuItems) / sizeof(mainMenuItems[0]);
 
+// Auto irrigation variables
 char* autoIrrigationMenuItems[] = {
   "Tillbaka         ",
-  "Schem bevattning ",
+  "Schemalagd bevattning ",
   "Full auto        ",
 };
+
+int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);;
+int selectedAutoRow = 0;
 
 // Manuall irrigations variabels
 int numOfManuallMenuRows = 3;
@@ -211,7 +216,10 @@ int dispenserRuntimeHour = 0;
 int dispenserRunTimeRemainderMinutes = 0;
 unsigned long startTimeDispenser = 0;
 
-
+// Start screen variables
+int selectStartScreenProgram = 0;
+bool insideStartScreen = false;
+bool runTimeAndDateOnes = false;
 
 struct DaysToTurnOn {
   bool sunday;

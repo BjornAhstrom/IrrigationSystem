@@ -1,23 +1,28 @@
 void autoIrrigationMenu() {
   selectedMenu = 3;
-  selectedAutoRow = 0;
   menuValue = 0;
-  //lcd.clear();
 
+  tft.fillScreen(GRAY);
+  tft.setTextSize(2);
+  tft.setCursor(35, 10);
+  tft.println("Automatisk bevattning");
+  tft.fillRect(20, 28, 280, 2, MAGENTA);
+  
+  writeMenuOptions(autoIrrigationMenuItems, autoMenuOptions - 1);
   autoIrrigationMenuSelection();
 }
 
 void autoIrrigationMenuSelection() {
-
+  drawMenuSelecting(menuValue, autoMenuOptions - 1);
   /*int startIndex = selectedAutoRow;
-  int endIndex = startIndex + screenRows;
+    int endIndex = startIndex + screenRows;
 
-  if (endIndex > numOfAutoMenuRows) {
+    if (endIndex > numOfAutoMenuRows) {
     endIndex = numOfAutoMenuRows;
     startIndex = endIndex - screenRows;
-  }
+    }
 
-  for (int i = startIndex; i < endIndex; i++) {
+    for (int i = startIndex; i < endIndex; i++) {
     lcd.setCursor(0, i);
 
     if (i == selectedAutoRow) {
@@ -28,7 +33,7 @@ void autoIrrigationMenuSelection() {
     }
     lcd.setCursor(2, i);
     lcd.print(autoIrrigationMenuItems[i]);
-  }*/
+    }*/
 }
 
 /*void scrollAutoIrrigationMenuUpAndDown() {
@@ -49,7 +54,7 @@ void autoIrrigationMenuSelection() {
     menuValue = 0;
   }
   autoIrrigationMenuSelection();
-}*/
+  }*/
 
 void autoIrrigationExecuteAction() {
 
