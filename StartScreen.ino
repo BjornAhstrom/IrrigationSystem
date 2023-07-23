@@ -11,10 +11,9 @@ void startScreen() {
 
   tft.fillRect(0, 83, 320, 2, BLACK);
 
-  startTimerClockIcon(10, 88);
-  hourglassIcon(10, 130);
-
-  hourglassIcon(10, 172);
+  startTimerClockIcon(10, 88, BLACK, GRAY);
+  hourglassIcon(10, 130, BLACK, GRAY);
+  calendarIcon(10, 172, BLACK, GRAY);
 
   tft.setTextColor(BLACK);
   tft.setTextSize(2);

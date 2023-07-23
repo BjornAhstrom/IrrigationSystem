@@ -3,8 +3,6 @@ void menuSelecting(int val) {
 
   switch (selectedMenu) {
     case 0:
-      //selectedMainMenuRow = val;
-      //scrollMainMenuUpAndDown();
 
       if (menuValue > mainMenuOptions - 1) {
         menuValue = 0;
@@ -29,7 +27,6 @@ void menuSelecting(int val) {
       sprinklerMenuAction();
       break;
     case 3:
-      //selectedAutoRow = val;
       if (menuValue > autoMenuOptions - 1) {
         menuValue = 0;
         selectedAutoRow = menuValue;
@@ -43,7 +40,6 @@ void menuSelecting(int val) {
         selectedAutoRow = menuValue;
         autoIrrigationMenuSelection();
       }
-      //scrollAutoIrrigationMenuUpAndDown();
       break;
     case 4:
       selectedManRow = val;
@@ -82,8 +78,19 @@ void menuSelecting(int val) {
       //scrollSettingsMenuUpAndDown();
       break;
     case 13:
-      selectedSetIrrigationTimeRow = val;
-      setSchedulingIrrigationTime();
+      if (menuValue > selectProgramMenuOptions - 1) {
+        menuValue = 0;
+        selectedProgramRow = menuValue;
+        setSchedulingIrrigationTime();
+      }
+      else if (menuValue < 0) {
+        menuValue = selectProgramMenuOptions - 1;
+        selectedProgramRow = menuValue;
+        setSchedulingIrrigationTime();
+      } else {
+        selectedProgramRow = menuValue;
+        setSchedulingIrrigationTime();
+      }
       break;
     case 14:
       currentIrrigationHour = val;

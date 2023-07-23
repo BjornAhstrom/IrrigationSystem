@@ -143,8 +143,19 @@ char* autoIrrigationMenuItems[] = {
   "Full auto        ",
 };
 
-int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);;
+int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);
 int selectedAutoRow = 0;
+
+// Auto select program variables
+char* selectProgramMenuItems[] = {
+  "Tillbaka         ",
+  "Program 1 ",
+  "Program 2 ",
+  "Program 3 ",
+};
+
+int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
+int selectedProgramRow = 0;
 
 // Manuall irrigations variabels
 int numOfManuallMenuRows = 3;
