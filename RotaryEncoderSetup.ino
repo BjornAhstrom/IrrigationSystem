@@ -23,18 +23,18 @@ void checkRotaryEncoderStatus() {
       if (insideMenu) {
         menuValue++;
       } else if (insideStartScreen) {
-        selectStartScreenProgram++;
-        if (selectStartScreenProgram > 2) {
-          selectStartScreenProgram = 0;
+        selectBoxIndex++;
+        if (selectBoxIndex > amountOfArea) {
+          selectBoxIndex = 0;
         }
       }
     } else {
       if (insideMenu) {
         menuValue--;
       } else if (insideStartScreen) {
-        selectStartScreenProgram--;
-        if (selectStartScreenProgram < 0) {
-          selectStartScreenProgram = 2;
+        selectBoxIndex--;
+        if (selectBoxIndex < 0) {
+          selectBoxIndex = amountOfArea;
         }
       }
     }
@@ -42,7 +42,7 @@ void checkRotaryEncoderStatus() {
     if (insideMenu) {
       menuSelecting(menuValue);
     } else if (insideStartScreen) {
-      displayProgram();
+      selectBox();
     }
   }
   lastStateCLK = currentStateCLK;
@@ -56,16 +56,20 @@ void checkRotaryEncoderStatus() {
     //button has been pressed, released and pressed again
     if (millis() - lastButtonPress > 50) {
 
-      
-      menuBtnPressSelecting();
-      /*if (insideMenu) {
-        menuBtnPressSelecting();
-        Serial.println("Main menu press 1");
+      if (openMainMenu) {
+        if (insideMenu) {
+          menuBtnPressSelecting();
+          Serial.println("Main menu press 1");
+        } else {
+          insideMenu = true;
+          mainMenu();
+          Serial.println("Main menu press 2");
+        }
       } else {
-        insideMenu = true;
-        mainMenu();
-        Serial.println("Main menu press 2");
-      }*/
+        Serial.println("AreaMenu() 1111111111");
+      }
+
+
 
     }
 

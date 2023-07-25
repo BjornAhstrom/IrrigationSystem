@@ -19,6 +19,7 @@ void mainMenuSelection() {
 void mainMenuExecutionAction() {
   switch (menuValue) {
     case 0:
+      Serial.println("Start screen !!!!!!!!!!!!");
       startScreen();
       break;
     case 1:

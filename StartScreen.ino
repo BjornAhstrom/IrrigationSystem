@@ -1,4 +1,5 @@
 void startScreen() {
+  openMainMenu = false;
   insideMenu = false;
   insideStartScreen = true;
   runTimeAndDateOnes = true;

@@ -119,12 +119,9 @@ void menuSelecting(int val) {
 
 
 void menuBtnPressSelecting() {
-
-  Serial.println("inside menuBtnPressSelecting()");
-
+  Serial.println("Pressed the function!!!");
   switch (selectedMenu) {
     case 0:
-      Serial.print("mainMenuExecutionAction()");
       mainMenuExecutionAction();
       break;
     case 1:

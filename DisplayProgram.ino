@@ -1,160 +1,57 @@
 void displayProgram() {
 
   tft.setTextSize(2);
-  
-  tft.fillRoundRect(5, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(7, 44, 26, 21, 3, GRAY);
-  tft.setCursor(9, 47);
-  tft.print("O1");
 
-  tft.fillRoundRect(40, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(42, 44, 26, 21, 3, GRAY);
-  tft.setCursor(44, 47);
-  tft.print("O2");
+  drawBoxesRow(5, 285, 42, 25, 31, amountOfArea, BLACK);
+  drawGear(286, 44, BLACK);
+}
 
-  tft.fillRoundRect(75, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(77, 44, 26, 21, 3, GRAY);
-  tft.setCursor(79, 47);
-  tft.print("O3");
+void drawBoxesRow(int startX, int endX, int y, int boxHeight, int boxWidth, int numBoxes, uint16_t color) {
+  int totalPadding = endX - startX - numBoxes * boxWidth; // Total padding between boxes
+  int padding = totalPadding / (numBoxes + 1); // Padding between each box
 
-  tft.fillRoundRect(110, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(112, 44, 26, 21, 3, GRAY);
-  tft.setCursor(114, 47);
-  tft.print("O4");
+  for (int i = 0; i < numBoxes; i++) {
+    int x = startX + padding * (i + 1) + i * boxWidth; // Calculate X position for each box
 
-  tft.fillRoundRect(145, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(147, 44, 26, 21, 3, GRAY);
-  tft.setCursor(149, 47);
-  tft.print("O5");
+    // Draw the box
+    tft.setTextColor(BLACK); // Text color
+    tft.fillRect(x, y, boxWidth, boxHeight, color);
+    tft.fillRect(x + 2, y + 2, boxWidth - 4, boxHeight - 4, GRAY);
 
-  tft.fillRoundRect(180, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(182, 44, 26, 21, 3, GRAY);
-  tft.setCursor(184, 47);
-  tft.print("O6");
-
-  tft.fillRoundRect(215, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(217, 44, 26, 21, 3, GRAY);
-  tft.setCursor(219, 47);
-  tft.print("O7");
-
-  tft.fillRoundRect(250, 42, 30, 25, 3, BLACK);
-  tft.fillRoundRect(252, 44, 26, 21, 3, GRAY);
-  tft.setCursor(254, 47);
-  tft.print("O8");
-
-  drawGear(290, 44);
-
-
-
-  /*switch (selectStartScreenProgram) {
-    case 0:
-      sprinklerTimerIsOn = true;
-      // Left box
-      tft.fillRoundRect(50, 42, 51, 37, 3, BLACK);
-      tft.fillRoundRect(52, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(WHITE);
-      tft.setCursor(60, 49);
-      tft.println("P1");
-
-      // Middle box
-      tft.fillRoundRect(135, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(137, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(145, 49);
-      tft.println("P2");
-
-      // Right box
-      tft.fillRoundRect(220, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(222, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(230, 49);
-      tft.println("P3");
-
-      tft.fillRect(55, 200, 22, 2, BLACK);
-      //tft.fillRect(92, 200, 22, 2, BLACK);
-      tft.fillRect(127, 200, 22, 2, BLACK);
-      tft.fillRect(164, 200, 22, 2, BLACK);
-      tft.fillRect(199, 200, 22, 2, BLACK);
-      //tft.fillRect(235, 200, 22, 2, BLACK);
-      tft.fillRect(272, 200, 22, 2, BLACK);
-      break;
-    case 1:
-      sprinklerTimerIsOn = false;
-      // Left box
-      tft.fillRoundRect(50, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(52, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(60, 49);
-      tft.println("P1");
-
-      // Middle box
-      tft.fillRoundRect(135, 42, 51, 37, 3, BLACK);
-      tft.fillRoundRect(137, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(WHITE);
-      tft.setCursor(145, 49);
-      tft.println("P2");
-
-      // Right box
-      tft.fillRoundRect(220, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(222, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(230, 49);
-      tft.println("P3");
-
-      tft.fillRect(55, 200, 22, 2, BLACK);
-      //tft.fillRect(92, 200, 22, 2, BLACK);
-      tft.fillRect(127, 200, 22, 2, BLACK);
-      //tft.fillRect(164, 200, 22, 2, BLACK);
-      tft.fillRect(199, 200, 22, 2, BLACK);
-      //tft.fillRect(235, 200, 22, 2, BLACK);
-      tft.fillRect(272, 200, 22, 2, BLACK);
-      break;
-    case 2:
-      sprinklerTimerIsOn = true;
-      // Left box
-      tft.fillRoundRect(50, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(52, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(60, 49);
-      tft.println("P1");
-
-      // Middle box
-      tft.fillRoundRect(135, 42, 51, 37, 3, LIGHTGRAY);
-      tft.fillRoundRect(137, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(LIGHTGRAY);
-      tft.setCursor(145, 49);
-      tft.println("P2");
-
-      // Right box
-      tft.fillRoundRect(220, 42, 51, 37, 3, BLACK);
-      tft.fillRoundRect(222, 44, 47, 33, 3, GRAY);
-      tft.setTextColor(WHITE);
-      tft.setCursor(230, 49);
-      tft.println("P3");
-
-      //tft.fillRect(55, 200, 22, 2, BLACK);
-      tft.fillRect(92, 200, 22, 2, BLACK);
-      //tft.fillRect(127, 200, 22, 2, BLACK);
-      tft.fillRect(164, 200, 22, 2, BLACK);
-      //tft.fillRect(199, 200, 22, 2, BLACK);
-      tft.fillRect(235, 200, 22, 2, BLACK);
-      //tft.fillRect(272, 200, 22, 2, BLACK);
-      break;
-    }
-
-    if (sprinklerTimerIsOn) {
-    tft.fillRoundRect(2, 216, 158, 22, 3, BLACK);
-    tft.setTextColor(GRAY);
+    // Draw the label
     tft.setTextSize(2);
-    tft.setCursor(70, 220);
-    tft.println("ON");
-    tft.fillRect(160, 216, 158, 22, GRAY);
+    tft.setCursor(x + 5, y + 5); // Offset for label position
+    tft.print("O" + String(i + 1));
+  }
+}
+
+void selectBox() {
+  selectedBox(5, 285, 73, 2, 31, amountOfArea, BLACK, selectBoxIndex);
+}
+
+void selectedBox(int startX, int endX, int y, int boxHeight, int boxWidth, int numBoxes, uint16_t color, int selectedBox) {
+
+  int totalPadding = endX - startX - numBoxes * boxWidth; // Total padding between boxes
+  int padding = totalPadding / (numBoxes + 1); // Padding between each box
+
+  for (int i = 0; i < numBoxes + 1; i++) {
+    int x = startX + padding * (i + 1) + i * boxWidth; // Calculate X position for each box
+
+    if (i == selectedBox) {
+
+      // Draw the box
+      tft.fillRect(x, y, boxWidth, boxHeight, color);
+      Serial.print("i: ");
+      Serial.println(i);
+
+      if (i == amountOfArea) {
+        openMainMenu = true;
+      } else {
+        openMainMenu = false;
+      }
+
     } else {
-    tft.fillRoundRect(160, 216, 158, 22, 3, BLACK);
-    tft.setTextColor(GRAY);
-    tft.setTextSize(2);
-    tft.setCursor(220, 220);
-    tft.println("OFF");
-    tft.fillRect(2, 216, 158, 22, GRAY);
-    }*/
+      tft.fillRect(x, y, boxWidth, boxHeight, GRAY);
+    }
+  }
 }

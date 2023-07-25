@@ -1,6 +1,6 @@
 void loop() {
   checkRotaryEncoderStatus();
-  
+
   startBlinkingTime();
   startBlinkingHour();
   startBlinkingMinute();
@@ -14,18 +14,26 @@ void loop() {
 
   if (!insideMenu) {
     digitalClockDisplay();
-    menuBtnPress();
   }
 
 }
 
 
 void menuBtnPress() {
-
+  openMainMenu = false;
   if (!digitalRead(sw) == HIGH) {
-    insideStartScreen = false;
-    insideMenu = true;
-    mainMenu();
+    //insideStartScreen = false;
+    //insideMenu = true;
+    //mainMenu();
+    
+    delay(100);
+    while (!digitalRead(sw));
+  }
+}
+
+void mainMenuBtnPress() {
+  if (!digitalRead(sw) == HIGH) {
+    
     delay(100);
     while (!digitalRead(sw));
   }

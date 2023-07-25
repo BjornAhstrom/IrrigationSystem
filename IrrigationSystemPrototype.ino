@@ -59,6 +59,7 @@ int menuValue = 0;
 int currentStateCLK;
 int lastStateCLK;
 unsigned long lastButtonPress = 0;
+bool openMainMenu = false;
 
 #define ON   1
 #define OFF  0
@@ -156,6 +157,10 @@ char* selectProgramMenuItems[] = {
 
 int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
 int selectedProgramRow = 0;
+
+// Choose area variables
+int amountOfArea = 8;
+int selectBoxIndex = 0;
 
 // Manuall irrigations variabels
 int numOfManuallMenuRows = 3;

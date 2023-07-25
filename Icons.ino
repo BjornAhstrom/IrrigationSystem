@@ -182,23 +182,23 @@ void waterDropIcon(int x, int y, int radius, uint16_t color) {
   tft.fillTriangle(x + 20 - radius, y + 15 + radius, x + 20 + radius, y + 15  + radius, x + 20, y + 15 - radius, color); // Fyll i en triangel som är den övre delen av vattendroppen
 }
 
-void drawGear(int x, int y) {
-  tft.fillCircle(x + 10, y + 10, 7, BLACK);
+void drawGear(int x, int y, uint16_t color) {
+  tft.fillCircle(x + 10, y + 10, 7, color);
   tft.fillCircle(x + 10, y + 10, 3, GRAY);
   
-  tft.fillRect(x + 9, y, 4, 4, BLACK); // Top
-  tft.fillRect(x, y + 8, 4, 4, BLACK); // Left
-  tft.fillRect(x + 17, y + 8, 4, 4, BLACK); // Right
-  tft.fillRect(x + 9, y + 17, 4, 4, BLACK); // Bottom
+  tft.fillRect(x + 9, y, 4, 4, color); // Top
+  tft.fillRect(x, y + 8, 4, 4, color); // Left
+  tft.fillRect(x + 17, y + 8, 4, 4, color); // Right
+  tft.fillRect(x + 9, y + 17, 4, 4, color); // Bottom
 
   // Top right
-  drawFilledRotatedRectangle(x + 16, y + 5, 45, 3, 6, BLACK); // X, Y, angle, Width, Height, Color 
+  drawFilledRotatedRectangle(x + 16, y + 5, 45, 3, 6, color); // X, Y, angle, Width, Height, Color 
   // Bottom right
-  drawFilledRotatedRectangle(x + 16, y + 15, 135, 3, 6, BLACK); // X, Y, angle, Width, Height, Color
+  drawFilledRotatedRectangle(x + 16, y + 15, 135, 3, 6, color); // X, Y, angle, Width, Height, Color
   // Top left
-  drawFilledRotatedRectangle(x + 5, y + 5, 315, 3, 6, BLACK); // X, Y, angle, Width, Height, Color 
+  drawFilledRotatedRectangle(x + 5, y + 5, 315, 3, 6, color); // X, Y, angle, Width, Height, Color 
   // Bottom left
-  drawFilledRotatedRectangle(x + 5, y + 15, 225, 3, 6, BLACK); // X, Y, angle, Width, Height, Color
+  drawFilledRotatedRectangle(x + 5, y + 15, 225, 3, 6, color); // X, Y, angle, Width, Height, Color
   
 }
 
