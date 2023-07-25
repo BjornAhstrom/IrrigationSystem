@@ -1,9 +1,8 @@
 void displayProgram() {
-
   tft.setTextSize(2);
-
   drawBoxesRow(5, 285, 42, 25, 31, amountOfArea, BLACK);
   drawGear(286, 44, BLACK);
+  selectBox();
 }
 
 void drawBoxesRow(int startX, int endX, int y, int boxHeight, int boxWidth, int numBoxes, uint16_t color) {
@@ -33,16 +32,14 @@ void selectedBox(int startX, int endX, int y, int boxHeight, int boxWidth, int n
 
   int totalPadding = endX - startX - numBoxes * boxWidth; // Total padding between boxes
   int padding = totalPadding / (numBoxes + 1); // Padding between each box
-
+  
+  
   for (int i = 0; i < numBoxes + 1; i++) {
     int x = startX + padding * (i + 1) + i * boxWidth; // Calculate X position for each box
-
+    
     if (i == selectedBox) {
-
       // Draw the box
       tft.fillRect(x, y, boxWidth, boxHeight, color);
-      Serial.print("i: ");
-      Serial.println(i);
 
       if (i == amountOfArea) {
         openMainMenu = true;

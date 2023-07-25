@@ -146,7 +146,7 @@ char* autoIrrigationMenuItems[] = {
 
 int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);
 int selectedAutoRow = 0;
-
+/*
 // Auto select program variables
 char* selectProgramMenuItems[] = {
   "Tillbaka         ",
@@ -157,10 +157,8 @@ char* selectProgramMenuItems[] = {
 
 int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
 int selectedProgramRow = 0;
+*/
 
-// Choose area variables
-int amountOfArea = 8;
-int selectBoxIndex = 0;
 
 // Manuall irrigations variabels
 int numOfManuallMenuRows = 3;
@@ -255,3 +253,27 @@ bool isScheduledTime(const DateTime& currentTime) {
   }
   return false;
 }
+
+class AreaView {
+  public:
+    String areaViewName;
+    int soilmoistureValue;
+    DateTime startTime;
+    DateTime irrigationLenght;
+    DaysToTurnOn daysToTurnOn;
+
+    AreaView() {
+      areaViewName = "";
+      soilmoistureValue = 0;
+      startTime = DateTime();
+      irrigationLenght = DateTime();
+      daysToTurnOn = DaysToTurnOn();
+    }
+
+};
+// Choose area variables
+int amountOfArea = 8;
+const int amountOfAreaViews = amountOfArea;
+int selectBoxIndex = 0;
+
+AreaView* areaViews;

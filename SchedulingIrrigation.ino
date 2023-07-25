@@ -8,12 +8,12 @@ void schedulingIrrigation() {
   tft.println("Valj program");
   tft.fillRect(20, 28, 280, 2, MAGENTA);
 
-  writeMenuOptions(selectProgramMenuItems, selectProgramMenuOptions - 1);
+  //writeMenuOptions(selectProgramMenuItems, selectProgramMenuOptions - 1);
   setSchedulingIrrigationTime();
 }
 
 void setSchedulingIrrigationTime() {
-  drawMenuSelecting(menuValue, selectProgramMenuOptions - 1);
+  //drawMenuSelecting(menuValue, selectProgramMenuOptions - 1);
 }
 
 void schedulingIrrigationExecutionAction() {
@@ -22,13 +22,13 @@ void schedulingIrrigationExecutionAction() {
       autoIrrigationMenu();
       break;
     case 1:
-      programSettings(1);
+      //programSettings(1);
       break;
     case 2:
-      programSettings(2);
+      //programSettings(2);
       break;
     case 3:
-      programSettings(3);
+      //programSettings(3);
       break;
   }
 }

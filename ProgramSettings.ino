@@ -1,4 +1,4 @@
-void programSettings(int program) {
+/*void programSettings(int program) {
   selectedMenu = 17;
   menuValue = 0;
 
@@ -63,4 +63,4 @@ void nextButton() {
   tft.setTextSize(2);
   tft.setCursor(131, 217);
   tft.println("Nasta");
-}
+}*/

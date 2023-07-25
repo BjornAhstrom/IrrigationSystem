@@ -78,7 +78,7 @@ void menuSelecting(int val) {
       //scrollSettingsMenuUpAndDown();
       break;
     case 13:
-      if (menuValue > selectProgramMenuOptions - 1) {
+      /*if (menuValue > selectProgramMenuOptions - 1) {
         menuValue = 0;
         selectedProgramRow = menuValue;
         setSchedulingIrrigationTime();
@@ -90,7 +90,7 @@ void menuSelecting(int val) {
       } else {
         selectedProgramRow = menuValue;
         setSchedulingIrrigationTime();
-      }
+      }*/
       break;
     case 14:
       currentIrrigationHour = val;
