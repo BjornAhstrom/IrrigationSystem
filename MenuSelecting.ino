@@ -82,15 +82,15 @@ void menuSelecting(int val) {
         menuValue = 0;
         selectedProgramRow = menuValue;
         setSchedulingIrrigationTime();
-      }
-      else if (menuValue < 0) {
+        }
+        else if (menuValue < 0) {
         menuValue = selectProgramMenuOptions - 1;
         selectedProgramRow = menuValue;
         setSchedulingIrrigationTime();
-      } else {
+        } else {
         selectedProgramRow = menuValue;
         setSchedulingIrrigationTime();
-      }*/
+        }*/
       break;
     case 14:
       currentIrrigationHour = val;
@@ -109,6 +109,19 @@ void menuSelecting(int val) {
       //scrollTimeLimitSprinklerUpAndDown();
       break;
     case 18:
+      if (menuValue > selectProgramMenuOptions - 1) {
+        menuValue = 0;
+        selectedProgramRow = menuValue;
+        areaMenuSettingsSelection();
+      }
+      else if (menuValue < 0) {
+        menuValue = selectProgramMenuOptions - 1;
+        selectedProgramRow = menuValue;
+        areaMenuSettingsSelection();
+      } else {
+        selectedProgramRow = menuValue;
+        areaMenuSettingsSelection();
+      }
       break;
     case 19:
       break;
@@ -119,7 +132,7 @@ void menuSelecting(int val) {
 
 
 void menuBtnPressSelecting() {
-  Serial.println("Pressed the function!!!");
+  Serial.println("Pressed the menuBtnPressSelecting() function!!!");
   switch (selectedMenu) {
     case 0:
       mainMenuExecutionAction();
@@ -178,6 +191,7 @@ void menuBtnPressSelecting() {
       timeLimitSprinklerMenuExecutionAction();
       break;
     case 18:
+      areaSettingsExecutionAction();
       break;
     case 19:
       break;

@@ -27,7 +27,10 @@ void checkRotaryEncoderStatus() {
         if (selectBoxIndex > amountOfArea) {
           selectBoxIndex = 0;
         }
+      } else if (insideAreaSettings) {
+        menuValue++;
       }
+      
     } else {
       if (insideMenu) {
         menuValue--;
@@ -36,14 +39,19 @@ void checkRotaryEncoderStatus() {
         if (selectBoxIndex < 0) {
           selectBoxIndex = amountOfArea;
         }
+      } else if (insideAreaSettings) {
+        menuValue--;
       }
     }
+
     // Add menu selecting function here
     if (insideMenu) {
       menuSelecting(menuValue);
     } else if (insideStartScreen) {
       selectBox();
-    }
+    } else if (insideAreaSettings) {
+        menuSelecting(menuValue);
+      }
   }
   lastStateCLK = currentStateCLK;
 
@@ -59,18 +67,18 @@ void checkRotaryEncoderStatus() {
       if (openMainMenu) {
         if (insideMenu) {
           menuBtnPressSelecting();
-          Serial.println("Main menu press 1");
         } else {
           insideMenu = true;
           mainMenu();
-          Serial.println("Main menu press 2");
         }
       } else {
-        Serial.println("AreaMenu() 1111111111");
+        if (insideAreaSettings) {
+          menuBtnPressSelecting();
+        } else {
+          insideAreaSettings = true;
+          areaSettings();
+        }
       }
-
-
-
     }
 
     // Remember last button press

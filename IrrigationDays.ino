@@ -156,7 +156,7 @@ void irrigationDaysMenuSelection() {
 
 
 void selectedDayExecutionAction() {
-  switch (selectedIrrigationDay) {
+ /* switch (selectedIrrigationDay) {
     case 0:
       daysToTurnOn.monday = !daysToTurnOn.monday;
       monSelected();
@@ -200,11 +200,11 @@ void selectedDayExecutionAction() {
     case 8:
       mainMenu();
       break;
-  }
+  }*/
 }
 
 
-String monSelected() {
+/*String monSelected() {
 
   if (daysToTurnOn.monday) {
     return "X";
@@ -263,7 +263,7 @@ String sunSelected() {
   } else {
     return " ";
   }
-}
+}*/
 
 /*
 

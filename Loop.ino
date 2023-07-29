@@ -12,7 +12,7 @@ void loop() {
   activateBlinkingIrrigationHour();
   activateBlinkingIrrigationMinute();
 
-  if (!insideMenu) {
+  if (!insideMenu && !insideAreaSettings) {
     digitalClockDisplay();
   }
 

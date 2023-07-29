@@ -146,18 +146,18 @@ char* autoIrrigationMenuItems[] = {
 
 int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);
 int selectedAutoRow = 0;
-/*
-// Auto select program variables
-char* selectProgramMenuItems[] = {
+
+  // Auto select program variables
+  char* selectProgramMenuItems[] = {
   "Tillbaka         ",
   "Program 1 ",
   "Program 2 ",
   "Program 3 ",
-};
+  };
 
-int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
-int selectedProgramRow = 0;
-*/
+  int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
+  int selectedProgramRow = 0;
+
 
 
 // Manuall irrigations variabels
@@ -235,7 +235,7 @@ int selectStartScreenProgram = 0;
 bool insideStartScreen = false;
 bool runTimeAndDateOnes = false;
 
-struct DaysToTurnOn {
+/*struct DaysToTurnOn {
   bool sunday;
   bool monday;
   bool tuesday;
@@ -243,9 +243,15 @@ struct DaysToTurnOn {
   bool thursday;
   bool friday;
   bool saturday;
+  };*/
+
+struct DaysToTurnOn {
+  bool days[7]; //
 };
 
 DaysToTurnOn daysToTurnOn = {false, false, false, false, false, false, false}; // Välj specifika dagar att starta spridarna på
+
+
 
 bool isScheduledTime(const DateTime& currentTime) {
   if (currentTime.hour() == scheduledTime.hour() && currentTime.minute() == scheduledTime.minute()) {
@@ -254,26 +260,46 @@ bool isScheduledTime(const DateTime& currentTime) {
   return false;
 }
 
-class AreaView {
+class ProgramArea {
   public:
-    String areaViewName;
+    String programName;
     int soilmoistureValue;
     DateTime startTime;
-    DateTime irrigationLenght;
+    DateTime lenghtOfIrrigation;
     DaysToTurnOn daysToTurnOn;
 
-    AreaView() {
-      areaViewName = "";
+    ProgramArea() {
+      programName = "";
       soilmoistureValue = 0;
       startTime = DateTime();
-      irrigationLenght = DateTime();
-      daysToTurnOn = DaysToTurnOn();
+      lenghtOfIrrigation = DateTime();
+
+      for (int i = 0; i < 7; i++) {
+        daysToTurnOn.days[i] = false;
+      }
     }
 
 };
+
+const int numProgramArea = 3;
+ProgramArea* programAreas[numProgramArea];
+
+class AreaView {
+  public:
+    String areaViewName;
+    ProgramArea programAreas[numProgramArea];
+
+    AreaView() {
+      areaViewName = "";
+      for (int i = 0; i < numProgramArea; i++) {
+        programAreas[i] = ProgramArea();
+      }
+    }
+};
 // Choose area variables
-int amountOfArea = 8;
+int amountOfArea = 5;
 const int amountOfAreaViews = amountOfArea;
 int selectBoxIndex = 0;
 
 AreaView* areaViews;
+bool insideAreaSettings = false;
