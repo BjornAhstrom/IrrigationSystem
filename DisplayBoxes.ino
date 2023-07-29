@@ -21,6 +21,12 @@ void drawBoxesRow(int startX, int endX, int y, int boxHeight, int boxWidth, int 
     tft.setTextSize(2);
     tft.setCursor(x + 5, y + 5); // Offset for label position
     tft.print("O" + String(i + 1));
+
+    
+    if (areaViews[i].areaViewName == "") {
+      areaViews[i].areaViewName = String(i + 1);
+    }
+    
   }
 }
 

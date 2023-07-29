@@ -76,7 +76,7 @@ void checkRotaryEncoderStatus() {
           menuBtnPressSelecting();
         } else {
           insideAreaSettings = true;
-          areaSettings();
+          areaSettings(selectBoxIndex);
         }
       }
     }

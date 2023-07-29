@@ -1,12 +1,16 @@
-void areaSettings() {
+void areaSettings(int selectBoxIndex) {
   selectedMenu = 18;
   //menuValue = 0;
   insideStartScreen = false;
   tft.fillScreen(GRAY);
+  tft.setTextColor(BLACK);
   tft.setTextSize(2);
-  tft.setCursor(5, 10);
-  tft.print("Installningar for omrade ");
-  tft.print("1");
+  tft.setCursor(30, 10);
+  tft.print("Omrade ");
+  tft.print(areaViews[selectBoxIndex].areaViewName);
+
+  Serial.print("selectBoxIndex: ");
+  Serial.println(selectBoxIndex);
 
   tft.fillRect(20, 28, 280, 2, CYAN);
 
