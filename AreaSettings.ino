@@ -23,16 +23,19 @@ void areaMenuSettingsSelection() {
 }
 
 void areaSettingsExecutionAction() {
-  
+
   switch (menuValue) {
     case 0:
       startScreen();
       break;
     case 1:
+      programSettings(1);
       break;
     case 2:
+      programSettings(2);
       break;
     case 3:
+      programSettings(3);
       break;
   }
 }

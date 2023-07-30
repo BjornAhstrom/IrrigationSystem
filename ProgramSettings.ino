@@ -1,3 +1,15 @@
+void programSettings(int program) {
+  selectedMenu = 17;
+  menuValue = 0;
+
+  tft.fillScreen(GRAY);
+  tft.setTextSize(2);
+  tft.setCursor(108, 10);
+  tft.print("Program ");
+  tft.println(program);
+  tft.fillRect(20, 28, 280, 2, CYAN);
+}
+
 /*void programSettings(int program) {
   selectedMenu = 17;
   menuValue = 0;

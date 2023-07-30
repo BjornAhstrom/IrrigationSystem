@@ -102,16 +102,18 @@ void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
 void displayIrrigationTimerMinutes(int selectedArea, int selectedProgram) {
   tft.setTextSize(3);
   if (areaViews[selectedArea].programAreas[selectedProgram].lenghtOfIrrigation.minute() < 10) {
-    tft.setCursor(180, 139);
+    tft.setCursor(160, 139);
     tft.print("0");
-    tft.setCursor(180, 145);
+    tft.setCursor(180, 139);
     tft.print(areaViews[selectedArea].programAreas[selectedProgram].lenghtOfIrrigation.minute());
     tft.setTextSize(2);
+    tft.setCursor(200, 145);
     tft.print("min");
   } else {
-    tft.setCursor(180, 145);
+    tft.setCursor(160, 139);
     tft.print(areaViews[selectedArea].programAreas[selectedProgram].lenghtOfIrrigation.minute());
     tft.setTextSize(2);
+    tft.setCursor(200, 145);
     tft.print("min");
   }
 }
