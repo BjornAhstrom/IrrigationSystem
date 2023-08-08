@@ -1,5 +1,5 @@
 void digitalClockDisplay() {
-  tft.setTextColor(WHITE);
+  tft.setTextColor(BLACK);
 
   DateTime now = rtc.now();
 

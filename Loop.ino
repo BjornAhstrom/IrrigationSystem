@@ -1,7 +1,13 @@
 void loop() {
   checkRotaryEncoderStatus();
+  startSetStartHourToBlink();
+  startSetStartMinuteToBlink();
+  startSetTimeTimerHourToBlink();
+  startSetTimeTimerMinuteToBlink();
+  startMinPercentToBlink();
+  startMaxPercentToBlink();
 
-  startBlinkingTime();
+  /*startBlinkingTime();
   startBlinkingHour();
   startBlinkingMinute();
   startBlinkingDate();
@@ -10,7 +16,7 @@ void loop() {
   startBlinkingDay();
   activatIrrigationBlinkingTime();
   activateBlinkingIrrigationHour();
-  activateBlinkingIrrigationMinute();
+  activateBlinkingIrrigationMinute();*/
 
   if (!insideMenu && !insideAreaSettings) {
     digitalClockDisplay();

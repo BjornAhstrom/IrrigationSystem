@@ -42,32 +42,62 @@ void menuSelecting(int val) {
       }
       break;
     case 4:
-      selectedManRow = val;
-      //scrollManuallIrrigationMenuUpAndDown();
+      if (menuValue > 23) {
+        menuValue = 0;
+      }
+      else if (menuValue < 0) {
+        menuValue = 23;
+      }
+      showHours(menuValue, 65, 49);
       break;
     case 5:
-      selectedTimeAndDateRow = val;
-      adjustTimeAndDateMenu();
+      if (menuValue > 59) {
+        menuValue = 0;
+      }
+      else if (menuValue < 0) {
+        menuValue = 59;
+      }
+      showMinutes(menuValue, 125, 49);
       break;
     case 6:
-      //currentHour = val;
-      hoursToAdjust();
+      if (menuValue > 24) {
+        menuValue = 1;
+      }
+      else if (menuValue < 1) {
+        menuValue = 24;
+      }
+      showHours(menuValue, 65, 94);
       break;
     case 7:
-      //currentMinute = val;
-      minutesToAdjust();
+      if (menuValue > 59) {
+        menuValue = 0;
+      }
+      else if (menuValue < 0) {
+        menuValue = 59;
+      }
+      showMinutes(menuValue, 150, 94);
       break;
     case 8:
-      selectedDateRow = val;
-      adjustDateMenu();
+      if (menuValue < 0) {
+        menuValue = 100;
+      }
+      else if (menuValue > 100) {
+        menuValue = 0;
+      }
+      showMinPercent(menuValue, 65, 139);
       break;
     case 9:
-      currentYear = val;
-      yearToAdjust();
+      if (menuValue < 0) {
+        menuValue = 100;
+      }
+      else if (menuValue > 100) {
+        menuValue = 0;
+      }
+      showMaxPercent(menuValue, 180, 139);
       break;
     case 10:
-      currentMonth = val;
-      monthToAdjust();
+      //currentMonth = val;
+      //monthToAdjust();
       break;
     case 11:
       currentDay = val;
@@ -147,30 +177,30 @@ void menuBtnPressSelecting() {
       autoIrrigationExecuteAction();
       break;
     case 4:
-      manuallIrrigationExecuteAction();
+      setStartMinuteAction();
+
       break;
     case 5:
-      adjustTimeAndDateExecutionAction();
+      setIrrigationTimeTimer();
       break;
     case 6:
-      adjustMinnutes();
+      setTimerMinute();
       break;
     case 7:
-      adjustTimeExecutionAction();
+      saveTimerData();
       break;
     case 8:
-      adjustDateExecutionAction();
-      //adjustYear();
+      saveHumidityMinPercent();
       break;
     case 9:
-      adjustMonth();
+      saveHumidityMaxPercent();
       break;
     case 10:
-      adjustDay();
+      //adjustDay();
       break;
     case 11:
       // Spara data
-      dateExecutionAction();
+      //dateExecutionAction();
       break;
     case 12:
       settingsExecuteAction();

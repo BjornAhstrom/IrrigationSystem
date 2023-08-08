@@ -43,6 +43,7 @@ Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, LCD_RESET);
 #define WHITE  0xFFFF
 #define GRAY  0xc658
 #define LIGHTGRAY 0xf7be
+#define ORANGE 0xfca0
 
 #define MINPRESSURE 10
 #define MAXPRESSURE 1000
@@ -147,16 +148,16 @@ char* autoIrrigationMenuItems[] = {
 int autoMenuOptions = sizeof(autoIrrigationMenuItems) / sizeof(autoIrrigationMenuItems[0]);
 int selectedAutoRow = 0;
 
-  // Auto select program variables
-  char* selectProgramMenuItems[] = {
+// Auto select program variables
+char* selectProgramMenuItems[] = {
   "Tillbaka         ",
   "Program 1 ",
   "Program 2 ",
   "Program 3 ",
-  };
+};
 
-  int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
-  int selectedProgramRow = 0;
+int selectProgramMenuOptions = sizeof(selectProgramMenuItems) / sizeof(selectProgramMenuItems[0]);
+int selectedProgramRow = 0;
 
 
 
@@ -220,15 +221,6 @@ bool activateIrrigationMinute = false;
 DateTime scheduledTime; // Tiden då spridarna ska gå igång HH:MM:SS
 unsigned long startTime; // Tiden då spridarna ska vara igång (i millisekunder)
 bool allDispensersOn = false; // Flagga för att indikera om spridarna är igång
-
-
-// Variables to set irrigation start time
-int startHour = 0;
-int startMinute = 0;
-unsigned long dispenserRunTime = 0;  // Time is in minutes
-int dispenserRuntimeHour = 0;
-int dispenserRunTimeRemainderMinutes = 0;
-unsigned long startTimeDispenser = 0;
 
 // Start screen variables
 int selectStartScreenProgram = 0;
@@ -303,3 +295,25 @@ int selectBoxIndex = 0;
 
 AreaView* areaViews;
 bool insideAreaSettings = false;
+
+
+// Programming start, irrigation and percent variables
+bool setStartHour = false;
+bool setStartMinute = false;
+bool setTimeTimerHour = false;
+bool setTimeTimerMinute = false;
+bool startHourBlinking = false;
+bool startMinuteBlinking = false;
+bool startMinPercentBlinking = false;
+bool startMaxPercentBlinking = false;
+bool blinkingHumidityPercent = false;
+int startHour = 3;
+int startMinute = 56;
+int timerHour = 5;
+int timerMinute = 30;
+int maxPercent = 0;
+int minPercent = 0;
+unsigned long dispenserRunTime = 0;  // Time is in minutes
+int dispenserRuntimeHour = 0;
+int dispenserRunTimeRemainderMinutes = 0;
+unsigned long startTimeDispenser = 0;
