@@ -96,8 +96,13 @@ void menuSelecting(int val) {
       showMaxPercent(menuValue, 180, 139);
       break;
     case 10:
-      //currentMonth = val;
-      //monthToAdjust();
+      if (menuValue < 0) {
+        menuValue = 7;
+      }
+      else if (menuValue > 7) {
+        menuValue = 0;
+      }
+      chooseDay(menuValue);
       break;
     case 11:
       currentDay = val;
@@ -196,7 +201,12 @@ void menuBtnPressSelecting() {
       saveHumidityMaxPercent();
       break;
     case 10:
-      //adjustDay();
+      if (menuValue >= 0 && menuValue <= 6) {
+        selectDay();
+      } else {
+        saveIrrigationData();
+      }
+      
       break;
     case 11:
       // Spara data

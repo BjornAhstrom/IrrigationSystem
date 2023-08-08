@@ -255,16 +255,18 @@ bool isScheduledTime(const DateTime& currentTime) {
 class ProgramArea {
   public:
     String programName;
-    int soilmoistureValue;
+    int soilmoistureValueMin;
+    int soilmoistureValueMax;
     DateTime startTime;
-    DateTime lenghtOfIrrigation;
+    unsigned long lenghtOfIrrigation;
     DaysToTurnOn daysToTurnOn;
 
     ProgramArea() {
       programName = "";
-      soilmoistureValue = 0;
+      soilmoistureValueMin = 0;
+      soilmoistureValueMax = 0;
       startTime = DateTime();
-      lenghtOfIrrigation = DateTime();
+      lenghtOfIrrigation = 0;
 
       for (int i = 0; i < 7; i++) {
         daysToTurnOn.days[i] = false;
@@ -309,8 +311,8 @@ bool startMaxPercentBlinking = false;
 bool blinkingHumidityPercent = false;
 int startHour = 3;
 int startMinute = 56;
-int timerHour = 5;
-int timerMinute = 30;
+int timerHour = 0;
+int timerMinute = 0;
 int maxPercent = 0;
 int minPercent = 0;
 unsigned long dispenserRunTime = 0;  // Time is in minutes

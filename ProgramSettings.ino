@@ -30,7 +30,7 @@ void setStartHourAction() {
   menuValue = startHour;
   setStartHour = true;
 }
-
+// Kolla varför timer datan hamnar på start datan i area view
 void setStartMinuteAction() {
   startHour = menuValue;
   menuValue = startMinute;
@@ -58,8 +58,8 @@ void setIrrigationTimeTimer() {
 
 void setTimerMinute() {
   timerHour = menuValue;
-  menuValue = timerMinute;
   selectedMenu = 7;
+  menuValue = timerMinute;
   setTimeTimerHour = false;
   setTimeTimerMinute = true;
   showHours(timerHour, 65, 94);
@@ -72,13 +72,13 @@ void setTimerMinute() {
 }
 
 void saveTimerData() {
+  timerMinute = menuValue;
   setTimeTimerMinute = false;
-
+  showMinutes(timerMinute, 150, 94);
   setHumidityPercentMinAndMax();
 }
 
 void setHumidityPercentMinAndMax() {
-  showMinutes(timerMinute, 150, 94);
   selectedMenu = 8;
   menuValue = minPercent;
   waterDropIcon(10, 130, 8, BLACK);
@@ -114,82 +114,101 @@ void saveHumidityMaxPercent() {
 }
 
 void setDaysToIrrigate() {
-
+  selectedMenu = 10;
+  menuValue = 0;
 
   calendarIcon(10, 175, BLACK, GRAY);
   tft.setTextSize(2);
   tft.setCursor(62, 184);
   tft.println("Mo Tu We Th Fr Sa Su");
+  chooseDay(menuValue);
+
+  tft.fillRoundRect(90, 219, 140, 19, 5, BLACK);
+  tft.setTextSize(2);
+  tft.setTextColor(GRAY);
+  tft.setCursor(130, 221);
+  tft.print("Spara");
 }
 
-/*void programSettings(int program) {
-  selectedMenu = 17;
-  menuValue = 0;
+void chooseDay(int value) {
+  int totalPadding = 305 - 62 - 7 * 25 + 10; // Total padding between boxes
+  int padding = totalPadding / (7); // Padding between each box
 
-  tft.fillScreen(GRAY);
-  tft.setTextSize(2);
-  tft.setCursor(108, 10);
-  tft.print("Program ");
-  tft.println(program);
-  tft.fillRect(20, 28, 280, 2, MAGENTA);
+  // Draw the gray lines for all days first
+  for (int i = 0; i < 7; i++) {
+    int grayX = 50 + padding * (i + 1) + i * 25;
+    tft.fillRect(grayX, 210, 25, 2, GRAY);
 
-  SetSchedulingTime();
-  }*/
-
-/*void SetSchedulingTime() {
-  setTimeToStartIrrigation();
-  setIrrigationTimer();
-  setHumidityPrecent();
-  nextButton();
+    if (areaViews[0].programAreas[0].daysToTurnOn.days[i]) {
+      tft.fillRect(grayX, 210, 25, 2, BLACK);
+    }
   }
 
-  void setTimeToStartIrrigation() {
-  startTimerClockIcon(20, 50, BLACK, GRAY);
-  tft.setTextSize(3);
-  tft.setCursor(75, 59);
-  tft.println("05:35");
+  if (value <= 6) {
+    // Draw the black line for the selected day
+    int x = 50 + padding * (value + 1) + value * 25; // Calculate X position for selected box
+    tft.fillRect(x, 210, 25, 2, BLACK);
+    tft.setTextSize(2);
+    tft.setTextColor(GRAY);
+    tft.setCursor(130, 221);
+    tft.print("Spara");
+
+    if (areaViews[0].programAreas[0].daysToTurnOn.days[value]) {
+      tft.fillRect(x, 210, 25, 2, WHITE);
+    }
+  }
+  else if (value == 7) {
+    //tft.fillRoundRect(90, 219, 140, 19, 5, BLACK);
+    tft.setTextSize(2);
+    tft.setTextColor(WHITE);
+    tft.setCursor(130, 221);
+    tft.print("Spara");
+  }
+}
+
+void selectDay() {
+  areaViews[0].programAreas[0].daysToTurnOn.days[menuValue] = !areaViews[0].programAreas[0].daysToTurnOn.days[menuValue];
+  chooseDay(menuValue);
+}
+
+long convertToMilliseconds(int hours, int minutes) {
+  return (hours * 3600000) + (minutes * 60000);
+}
+
+void saveIrrigationData() {
+  // Saving data
+  areaViews[0].programAreas[0].startTime = DateTime(0, 0, 0, startHour, startMinute, 0);
+  areaViews[0].programAreas[0].lenghtOfIrrigation = convertToMilliseconds(timerHour, timerMinute);
+  areaViews[0].programAreas[0].soilmoistureValueMin = minPercent;
+  areaViews[0].programAreas[0].soilmoistureValueMax = maxPercent;
+
+  if (millis() - runTime >= 200) {
+    runTime = millis();
+    startScreen();
   }
 
-  void setIrrigationTimer() {
-  hourglassIcon(20, 100, BLACK, GRAY);
-  tft.setTextSize(3);
-  tft.setCursor(75, 109);
-  tft.print("9");
-  tft.setTextSize(2);
-  tft.setCursor(97, 115);
-  tft.println("tim");
-  tft.setTextSize(3);
-  tft.setCursor(155, 109);
-  tft.println("35");
-  tft.setTextSize(2);
-  tft.setCursor(197, 115);
-  tft.println("min");
+}
+
+/*
+  // Converting minutes to hour and minutes if minutes is bigger then 60
+  void convertRunTimeInMinutesToHourAndMinutes() {
+  if (dispenserRunTime > 59) {
+
+    dispenserRuntimeHour = (dispenserRunTime / 60);
+    dispenserRunTimeRemainderMinutes = (dispenserRunTime % 60);
+
+  } else if (dispenserRunTime < 0) {
+    dispenserRunTime = 0;
+  } else {
+    dispenserRunTimeRemainderMinutes = dispenserRunTime;
   }
 
-  void setHumidityPrecent() {
-  waterDropIcon(20, 150, 8, BLACK);
-  tft.setTextSize(3);
-  tft.setCursor(75, 159);
-  tft.print("40");
-  tft.setCursor(120, 159);
-  tft.print("%");
-  tft.setCursor(155, 159);
-  tft.print("-");
-  tft.setCursor(190, 159);
-  tft.print("60");
-  tft.setCursor(235, 159);
-  tft.print("%");
+  if (dispenserRunTime < 60) {
+    dispenserRuntimeHour = 0;
+
   }
-
-  void nextButton() {
-  tft.fillRoundRect(80, 213, 160, 25, 3, BLACK);
-  tft.setTextColor(GRAY);
-  tft.setTextSize(2);
-  tft.setCursor(131, 217);
-  tft.println("Nasta");
-  }*/
-
-
+  }
+*/
 
 void startSetStartHourToBlink() {
 
@@ -206,8 +225,6 @@ void startSetStartHourToBlink() {
     }
   }
 }
-
-
 
 void startSetStartMinuteToBlink() {
 
@@ -298,8 +315,8 @@ void showMinPercent(int percent, int y, int x) {
     tft.println("00");
     tft.setCursor(y + 36, x);
     tft.println(percent);
-  }
-  else*/ if (percent < 10) {
+    }
+    else*/ if (percent < 10) {
     tft.fillRect(y - 1, x - 1, 62, 22, GRAY);
     tft.setTextColor(BLACK);
     tft.setCursor(y, x);
@@ -325,8 +342,8 @@ void showMaxPercent(int percent, int y, int x) {
     tft.println("00");
     tft.setCursor(y + 36, x);
     tft.println(percent);
-  } else*/ if (percent < 10) {
-     tft.fillRect(y - 1, x - 1, 62, 22, GRAY);
+    } else*/ if (percent < 10) {
+    tft.fillRect(y - 1, x - 1, 62, 22, GRAY);
     tft.setTextColor(BLACK);
     tft.setCursor(y, x);
     tft.println("0");
