@@ -22,11 +22,11 @@ void drawBoxesRow(int startX, int endX, int y, int boxHeight, int boxWidth, int 
     tft.setCursor(x + 5, y + 5); // Offset for label position
     tft.print("O" + String(i + 1));
 
-    
+
     if (areaViews[i].areaViewName == "") {
       areaViews[i].areaViewName = String(i + 1);
     }
-    
+
   }
 }
 
@@ -35,19 +35,20 @@ void selectBox() {
 }
 
 void selectedBox(int startX, int endX, int y, int boxHeight, int boxWidth, int numBoxes, uint16_t color, int selectedBox) {
-  
+
 
   int totalPadding = endX - startX - numBoxes * boxWidth; // Total padding between boxes
   int padding = totalPadding / (numBoxes + 1); // Padding between each box
-  
-  
+
+
   for (int i = 0; i < numBoxes + 1; i++) {
     int x = startX + padding * (i + 1) + i * boxWidth; // Calculate X position for each box
-    
+
     if (i == selectedBox) {
       // Draw the box
       tft.fillRect(x, y, boxWidth, boxHeight, color);
-      displayStartAndIrrigationTime(selectedBox);
+
+      displayStartAndIrrigationTime(selectedBox, currentIndex);
       if (i == amountOfArea) {
         openMainMenu = true;
         displayMenuText();

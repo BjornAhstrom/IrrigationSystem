@@ -5,6 +5,7 @@ void setup() {
   delete[] areaViews;
   areaViews = new AreaView[amountOfAreaViews];
   //  setTime(15, 10, 38, 26, 6, 23);
+  setupTempSensor();
   RTCSetup();
   //lcdScreenSetup();
   tftScreenSetup();

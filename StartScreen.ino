@@ -16,5 +16,5 @@ void startScreen() {
 
 
   areaView();
-  displayStartAndIrrigationTime(0);
+  displayStartAndIrrigationTime(0, 0);
 }

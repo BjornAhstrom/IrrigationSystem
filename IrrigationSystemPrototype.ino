@@ -1,5 +1,27 @@
 #include <Wire.h>
 #include "RTClib.h"
+#include <DHT.h> 
+
+//Temperature sensor variables
+#define DHTPIN 31     // what pin we're connected to
+#define DHTTYPE DHT22   // DHT22
+DHT dht(DHTPIN, DHTTYPE); // Initialize DHT sensor for normal 16mhz Arduino
+
+float hum;  //Stores humidity value
+float temp; //Stores temperature value
+float oldTemp;
+char buffer[4];
+
+const byte celsiusChar[8] = {
+  B00110,
+  B01001,
+  B01000,
+  B01000,
+  B01001,
+  B00110,
+  B00000,
+  B00000
+};
 
 // TFT screen variables
 // Modified for SPFD5408 Library by Joao Lopes
@@ -86,7 +108,7 @@ int hours;
 int minutes;
 int seconds;
 
-char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"};
+char daysOfTheWeek[7][12] = {"So", "Mo", "Ti", "On", "To", "Fr", "Lo"};
 
 // Relay variables
 const int relays[] = {51, 52, 53, 54, 55};
@@ -309,8 +331,8 @@ bool startMinuteBlinking = false;
 bool startMinPercentBlinking = false;
 bool startMaxPercentBlinking = false;
 bool blinkingHumidityPercent = false;
-int startHour = 3;
-int startMinute = 56;
+int startHour = 0;
+int startMinute = 0;
 int timerHour = 0;
 int timerMinute = 0;
 int maxPercent = 0;
@@ -319,3 +341,9 @@ unsigned long dispenserRunTime = 0;  // Time is in minutes
 int dispenserRuntimeHour = 0;
 int dispenserRunTimeRemainderMinutes = 0;
 unsigned long startTimeDispenser = 0;
+
+const int textCount = 3;
+const unsigned long interval = 2000; // 1 sekund
+
+unsigned long previousMillis = 0;
+int currentIndex = 0;

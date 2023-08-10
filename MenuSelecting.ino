@@ -49,6 +49,7 @@ void menuSelecting(int val) {
         menuValue = 23;
       }
       showHours(menuValue, 65, 49);
+      startHour = menuValue;
       break;
     case 5:
       if (menuValue > 59) {
@@ -58,15 +59,17 @@ void menuSelecting(int val) {
         menuValue = 59;
       }
       showMinutes(menuValue, 125, 49);
+      startMinute = menuValue;
       break;
     case 6:
       if (menuValue > 24) {
-        menuValue = 1;
+        menuValue = 0;
       }
-      else if (menuValue < 1) {
+      else if (menuValue < 0) {
         menuValue = 24;
       }
       showHours(menuValue, 65, 94);
+      timerHour = menuValue;
       break;
     case 7:
       if (menuValue > 59) {
@@ -76,6 +79,7 @@ void menuSelecting(int val) {
         menuValue = 59;
       }
       showMinutes(menuValue, 150, 94);
+      timerMinute = menuValue;
       break;
     case 8:
       if (menuValue < 0) {
@@ -183,7 +187,6 @@ void menuBtnPressSelecting() {
       break;
     case 4:
       setStartMinuteAction();
-
       break;
     case 5:
       setIrrigationTimeTimer();

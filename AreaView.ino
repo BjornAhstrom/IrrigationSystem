@@ -2,12 +2,15 @@ void areaView() {
   //tft.fillScreen(GRAY);
   tft.setTextSize(3);
 
+  tft.fillRect(228, 86, 88, 30, BLACK);
+  tft.fillRect(230, 88, 84, 26, GRAY);
+
   mockData();
   startTimerClockIcon(10, 88, BLACK, GRAY);
   hourglassIcon(10, 130, BLACK, GRAY);
   calendarIcon(10, 172, BLACK, GRAY);
 
-  splitMilliseconds(areaViews[0].programAreas[0].lenghtOfIrrigation, timerHour, timerMinute);
+
 }
 
 void splitMilliseconds(long milliseconds, int &hours, int &minutes) {
@@ -26,19 +29,21 @@ void displayMenuText() {
   tft.print("MENY");
 }
 
-void displayStartAndIrrigationTime(int selectedArea) {
+void displayStartAndIrrigationTime(int selectedArea, int selectedProgram) {
   tft.setTextSize(3);
   tft.setTextColor(BLACK);
 
-  displayStartHours(selectedArea, 0);
+  splitMilliseconds(areaViews[selectedArea].programAreas[selectedProgram].lenghtOfIrrigation, timerHour, timerMinute);
+  displayStartHours(selectedArea, selectedProgram);
   displayStartMinutes(selectedArea, 0);
-  displayIrrigationTimerHours(selectedArea, 0);
-  displayIrrigationTimerMinutes(selectedArea, 0);
+  displayIrrigationTimerHours(selectedArea, selectedProgram);
+  displayIrrigationTimerMinutes(selectedArea, selectedProgram);
 
   tft.setTextSize(2);
   tft.setCursor(60, 180);
   tft.println("Mo Tu We Th Fr Sa Su");
   selectedDay(48, 295, 200, 2, 25, 7, BLACK, selectedArea);
+
 }
 
 void selectedDay(int startX, int endX, int y, int boxHeight, int boxWidth, int numDays, uint16_t color, int selectedArea) {
@@ -60,30 +65,34 @@ void selectedDay(int startX, int endX, int y, int boxHeight, int boxWidth, int n
 }
 
 void displayStartHours(int selectedArea, int selectedProgram) {
-  tft.fillRect(60, 97, 200, 30, GRAY);
+  tft.fillRect(60, 97, 150, 30, GRAY);
 
-  if (areaViews[selectedArea].programAreas[selectedProgram].startTime.hour() < 10) {
+  int testHour = areaViews[selectedArea].programAreas[selectedProgram].startTime.hour();
+
+  if (testHour < 10) {
     tft.setCursor(60, 97);
     tft.print("0");
     tft.setCursor(80, 97);
-    tft.print(areaViews[selectedArea].programAreas[selectedProgram].startTime.hour());
+    tft.print(testHour);
     tft.print(":");
   } else {
     tft.setCursor(60, 97);
-    tft.print(areaViews[selectedArea].programAreas[selectedProgram].startTime.hour());
+    tft.print(testHour);
     tft.print(":");
   }
 }
 
 int displayStartMinutes(int selectedArea, int selectedProgram) {
-  if (areaViews[selectedArea].programAreas[selectedProgram].startTime.minute() < 10) {
+  int testMinute = areaViews[selectedArea].programAreas[selectedProgram].startTime.minute();
+
+  if (testMinute < 10) {
     tft.setCursor(120, 97);
     tft.print("0");
     tft.setCursor(140, 97);
-    tft.print(areaViews[selectedArea].programAreas[selectedProgram].startTime.minute());
+    tft.print(testMinute);
   } else {
     tft.setCursor(120, 97);
-    tft.print(areaViews[selectedArea].programAreas[selectedProgram].startTime.minute());
+    tft.print(testMinute);
   }
 }
 
@@ -108,7 +117,7 @@ void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
 }
 
 void displayIrrigationTimerMinutes(int selectedArea, int selectedProgram) {
-  // Gör så att millisekunder blir till minuter. Dela sedan minuter så att det blir timmar och minuter
+
   tft.setTextSize(3);
   if (timerMinute < 10) {
     tft.setCursor(160, 139);
@@ -138,29 +147,41 @@ void mockData() {
     areaViews[0].programAreas[0].daysToTurnOn.days[5] = true;
     areaViews[0].programAreas[0].daysToTurnOn.days[6] = true;*/
 
-  areaViews[0].programAreas[1].startTime = DateTime(0, 0, 0, 11, 15, 0);
-  areaViews[0].programAreas[1].lenghtOfIrrigation = 110;
-  areaViews[0].programAreas[1].daysToTurnOn.days[0] = true;
-  areaViews[0].programAreas[1].daysToTurnOn.days[1] = true;
-  areaViews[0].programAreas[1].daysToTurnOn.days[6] = true;
-
-  areaViews[0].programAreas[2].startTime = DateTime(0, 0, 0, 22, 18, 0);
-  areaViews[0].programAreas[2].lenghtOfIrrigation = 10;
-  areaViews[0].programAreas[2].daysToTurnOn.days[1] = true;
-  areaViews[0].programAreas[2].daysToTurnOn.days[4] = true;
-  areaViews[0].programAreas[2].daysToTurnOn.days[5] = true;
-
   areaViews[1].programAreas[0].startTime = DateTime(0, 0, 0, 3, 15, 0);
-  areaViews[1].programAreas[0].lenghtOfIrrigation = 90;
+  areaViews[1].programAreas[0].lenghtOfIrrigation = 1080000;
+  areaViews[1].programAreas[0].daysToTurnOn.days[0] = true;
   areaViews[1].programAreas[0].daysToTurnOn.days[1] = true;
-  areaViews[1].programAreas[0].daysToTurnOn.days[3] = true;
-  areaViews[1].programAreas[0].daysToTurnOn.days[5] = true;
+  areaViews[1].programAreas[0].daysToTurnOn.days[6] = true;
 
-  areaViews[1].programAreas[1].startTime = DateTime(0, 0, 0, 12, 20, 0);
-  areaViews[1].programAreas[1].lenghtOfIrrigation = 78;
-  areaViews[1].programAreas[1].daysToTurnOn.days[4] = true;
-  areaViews[1].programAreas[1].daysToTurnOn.days[5] = true;
-  areaViews[1].programAreas[1].daysToTurnOn.days[6] = true;
+  areaViews[1].programAreas[1].startTime = DateTime(0, 0, 0, 12, 0, 0);
+  areaViews[1].programAreas[1].lenghtOfIrrigation = 2080000;
+  areaViews[1].programAreas[1].daysToTurnOn.days[2] = true;
+  areaViews[1].programAreas[1].daysToTurnOn.days[3] = true;
+  areaViews[1].programAreas[1].daysToTurnOn.days[7] = true;
+
+  areaViews[1].programAreas[2].startTime = DateTime(0, 0, 0, 21, 30, 0);
+  areaViews[1].programAreas[2].lenghtOfIrrigation = 8880000;
+  areaViews[1].programAreas[2].daysToTurnOn.days[1] = true;
+  areaViews[1].programAreas[2].daysToTurnOn.days[4] = true;
+  areaViews[1].programAreas[2].daysToTurnOn.days[5] = true;
+
+  areaViews[2].programAreas[0].startTime = DateTime(0, 0, 0, 22, 18, 0);
+  areaViews[2].programAreas[0].lenghtOfIrrigation = 960000;
+  areaViews[2].programAreas[0].daysToTurnOn.days[1] = true;
+  areaViews[2].programAreas[0].daysToTurnOn.days[4] = true;
+  areaViews[2].programAreas[0].daysToTurnOn.days[5] = true;
+
+  areaViews[3].programAreas[0].startTime = DateTime(0, 0, 0, 3, 15, 0);
+  areaViews[3].programAreas[0].lenghtOfIrrigation = 9000000;
+  areaViews[3].programAreas[0].daysToTurnOn.days[1] = true;
+  areaViews[3].programAreas[0].daysToTurnOn.days[3] = true;
+  areaViews[3].programAreas[0].daysToTurnOn.days[5] = true;
+
+  areaViews[4].programAreas[0].startTime = DateTime(0, 0, 0, 12, 20, 0);
+  areaViews[4].programAreas[0].lenghtOfIrrigation = 4500000;
+  areaViews[4].programAreas[0].daysToTurnOn.days[4] = true;
+  areaViews[4].programAreas[0].daysToTurnOn.days[5] = true;
+  areaViews[4].programAreas[0].daysToTurnOn.days[6] = true;
 
   /*areaViews[1].programAreas[2].startTime = DateTime(0, 0, 0, 21, 30, 0);
     areaViews[1].programAreas[2].lenghtOfIrrigation = 50;

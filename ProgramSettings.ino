@@ -8,45 +8,44 @@ void programSettings(int program) {
   tft.print("Program ");
   tft.println(program);
   tft.fillRect(20, 28, 280, 2, CYAN);
-  setStartHourAction();
-
+  
   setTimeToStartIrrigation();
-
-
 }
 
 void setTimeToStartIrrigation() {
-  menuValue = startHour;
 
-  startTimerClockIcon(10, 40, BLACK, GRAY);
 
   showHours(startHour, 65, 49);
   tft.setCursor(105, 49);
   tft.println(":");
   showMinutes(startMinute, 125, 49);
+
+  setStartHourAction();
 }
 
 void setStartHourAction() {
   menuValue = startHour;
+  startTimerClockIcon(10, 40, BLACK, GRAY);
   setStartHour = true;
 }
-// Kolla varför timer datan hamnar på start datan i area view
+
 void setStartMinuteAction() {
-  startHour = menuValue;
-  menuValue = startMinute;
-  selectedMenu = 5;
-  showHours(startHour, 65, 49);
   setStartHour = false;
+  startHour = menuValue;
+
+  selectedMenu = 5;
+  menuValue = startMinute;
   setStartMinute = true;
+  showHours(startHour, 65, 49);
 }
 
 void setIrrigationTimeTimer() {
   setStartMinute = false;
-  showMinutes(startMinute, 125, 49);
   startMinute = menuValue;
-  menuValue = timerHour;
-  selectedMenu = 6;
+  showMinutes(startMinute, 125, 49);
 
+  selectedMenu = 6;
+  menuValue = timerHour;
   setTimeTimerHour = true;
 
   hourglassIcon(10, 85, BLACK, GRAY);
@@ -189,27 +188,6 @@ void saveIrrigationData() {
 
 }
 
-/*
-  // Converting minutes to hour and minutes if minutes is bigger then 60
-  void convertRunTimeInMinutesToHourAndMinutes() {
-  if (dispenserRunTime > 59) {
-
-    dispenserRuntimeHour = (dispenserRunTime / 60);
-    dispenserRunTimeRemainderMinutes = (dispenserRunTime % 60);
-
-  } else if (dispenserRunTime < 0) {
-    dispenserRunTime = 0;
-  } else {
-    dispenserRunTimeRemainderMinutes = dispenserRunTime;
-  }
-
-  if (dispenserRunTime < 60) {
-    dispenserRuntimeHour = 0;
-
-  }
-  }
-*/
-
 void startSetStartHourToBlink() {
 
   if (setStartHour) {
@@ -249,7 +227,7 @@ void startSetTimeTimerHourToBlink() {
       runTime = millis();
 
       if (startHourBlinking) {
-        showHours(startHour, 65, 94);
+        showHours(timerHour, 65, 94);
       } else {
         hideHours(64, 93);
       }
@@ -264,7 +242,7 @@ void startSetTimeTimerMinuteToBlink() {
       runTime = millis();
 
       if (startMinuteBlinking) {
-        showMinutes(startMinute, 150, 94);
+        showMinutes(timerMinute, 150, 94);
       } else {
         hideMinutes(149, 93);
       }
@@ -302,7 +280,6 @@ void startMaxPercentToBlink() {
     }
   }
 }
-
 
 
 void showMinPercent(int percent, int y, int x) {
@@ -371,7 +348,7 @@ void hideMaxPercent(int y, int x) {
 }
 
 void showHours(int hours, int y, int x) {
-  startHour = hours;
+  //startHour = hours;
   tft.setTextSize(3);
   if (hours < 10) {
     tft.fillRect(y - 1, x - 1, 42, 22, GRAY);
@@ -393,7 +370,7 @@ void hideHours(int y, int x) {
 }
 
 void showMinutes(int minutes, int y, int x) {
-  startMinute = minutes;
+  //startMinute = minutes;
 
   tft.setTextSize(3);
   if (minutes < 10) {

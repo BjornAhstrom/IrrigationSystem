@@ -6,20 +6,28 @@ void loop() {
   startSetTimeTimerMinuteToBlink();
   startMinPercentToBlink();
   startMaxPercentToBlink();
-
   /*startBlinkingTime();
-  startBlinkingHour();
-  startBlinkingMinute();
-  startBlinkingDate();
-  startBlinkingYear();
-  startBlinkingMonth();
-  startBlinkingDay();
-  activatIrrigationBlinkingTime();
-  activateBlinkingIrrigationHour();
-  activateBlinkingIrrigationMinute();*/
+    startBlinkingHour();
+    startBlinkingMinute();
+    startBlinkingDate();
+    startBlinkingYear();
+    startBlinkingMonth();
+    startBlinkingDay();
+    activatIrrigationBlinkingTime();
+    activateBlinkingIrrigationHour();
+    activateBlinkingIrrigationMinute();*/
 
   if (!insideMenu && !insideAreaSettings) {
     digitalClockDisplay();
+  }
+
+  unsigned long currentMillis = millis();
+  // Kolla om intervallet har passerat
+  if (currentMillis - previousMillis >= interval) {
+    // Spara nuvarande tid som senaste tidpunkt
+    previousMillis = currentMillis;
+    displayStartAndIrrigationTime(selectBoxIndex, currentIndex);
+    currentIndex = (currentIndex + 1) % textCount;
   }
 
 }
@@ -31,7 +39,7 @@ void menuBtnPress() {
     //insideStartScreen = false;
     //insideMenu = true;
     //mainMenu();
-    
+
     delay(100);
     while (!digitalRead(sw));
   }
@@ -39,7 +47,7 @@ void menuBtnPress() {
 
 void mainMenuBtnPress() {
   if (!digitalRead(sw) == HIGH) {
-    
+
     delay(100);
     while (!digitalRead(sw));
   }
