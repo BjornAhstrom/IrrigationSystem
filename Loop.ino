@@ -27,6 +27,11 @@ void loop() {
     // Spara nuvarande tid som senaste tidpunkt
     previousMillis = currentMillis;
     displayStartAndIrrigationTime(selectBoxIndex, currentIndex);
+    tft.fillRect(277, 99, 20, 25, GRAY);
+    tft.setTextSize(3);
+    tft.setTextColor(BLACK);
+    tft.setCursor(278, 100);
+    tft.print(currentIndex + 1);
     currentIndex = (currentIndex + 1) % textCount;
   }
 

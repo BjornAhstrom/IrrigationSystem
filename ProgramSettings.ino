@@ -25,7 +25,7 @@ void setTimeToStartIrrigation() {
 
 void setStartHourAction() {
   menuValue = startHour;
-  startTimerClockIcon(10, 40, BLACK, GRAY);
+  startTimerClockIcon(10, 40, 41, BLACK, GRAY);
   setStartHour = true;
 }
 

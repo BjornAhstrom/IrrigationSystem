@@ -2,15 +2,24 @@ void areaView() {
   //tft.fillScreen(GRAY);
   tft.setTextSize(3);
 
-  tft.fillRect(228, 86, 88, 30, BLACK);
-  tft.fillRect(230, 88, 84, 26, GRAY);
+  //tft.fillRect(228, 86, 88, 30, BLACK);
+  //tft.fillRect(230, 88, 84, 26, GRAY);
 
   mockData();
-  startTimerClockIcon(10, 88, BLACK, GRAY);
+  startTimerClockIcon(10, 88, 41, BLACK, GRAY);
   hourglassIcon(10, 130, BLACK, GRAY);
   calendarIcon(10, 172, BLACK, GRAY);
 
-
+  
+  
+  tft.fillRect(250, 90, 50, 40, BLACK);
+  tft.fillRect(252, 92, 46, 36, GRAY);
+  tft.setTextSize(3);
+  tft.setTextColor(BLACK);
+  //tft.setCursor(90, 100);
+  //tft.print(":");
+  tft.setCursor(258, 100);
+  tft.print("P");
 }
 
 void splitMilliseconds(long milliseconds, int &hours, int &minutes) {
@@ -35,7 +44,7 @@ void displayStartAndIrrigationTime(int selectedArea, int selectedProgram) {
 
   splitMilliseconds(areaViews[selectedArea].programAreas[selectedProgram].lenghtOfIrrigation, timerHour, timerMinute);
   displayStartHours(selectedArea, selectedProgram);
-  displayStartMinutes(selectedArea, 0);
+  displayStartMinutes(selectedArea, selectedProgram);
   displayIrrigationTimerHours(selectedArea, selectedProgram);
   displayIrrigationTimerMinutes(selectedArea, selectedProgram);
 
@@ -65,7 +74,7 @@ void selectedDay(int startX, int endX, int y, int boxHeight, int boxWidth, int n
 }
 
 void displayStartHours(int selectedArea, int selectedProgram) {
-  tft.fillRect(60, 97, 150, 30, GRAY);
+  tft.fillRect(60, 97, 40, 30, GRAY);
 
   int testHour = areaViews[selectedArea].programAreas[selectedProgram].startTime.hour();
 
@@ -83,8 +92,9 @@ void displayStartHours(int selectedArea, int selectedProgram) {
 }
 
 int displayStartMinutes(int selectedArea, int selectedProgram) {
+  tft.fillRect(120, 97, 40, 30, GRAY);
   int testMinute = areaViews[selectedArea].programAreas[selectedProgram].startTime.minute();
-
+  
   if (testMinute < 10) {
     tft.setCursor(120, 97);
     tft.print("0");
@@ -97,7 +107,8 @@ int displayStartMinutes(int selectedArea, int selectedProgram) {
 }
 
 void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
-  tft.fillRect(60, 139, 200, 30, GRAY);
+  tft.fillRect(60, 139, 40, 30, GRAY);
+  
   tft.setTextSize(3);
   if (timerHour < 10) {
     tft.setCursor(60, 139);
@@ -117,7 +128,8 @@ void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
 }
 
 void displayIrrigationTimerMinutes(int selectedArea, int selectedProgram) {
-
+  tft.fillRect(160, 139, 40, 30, GRAY);
+  
   tft.setTextSize(3);
   if (timerMinute < 10) {
     tft.setCursor(160, 139);

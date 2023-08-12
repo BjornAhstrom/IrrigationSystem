@@ -41,7 +41,7 @@ void digitalClockDisplay() {
     setSeconds(seconds);
   }
 
-  displayTemperature(240, 90);
+  //displayTemperature(240, 90);
 }
 
 void setHours(int hour) {

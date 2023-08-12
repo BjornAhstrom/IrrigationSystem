@@ -1,31 +1,31 @@
-void startTimerClockIcon(int x, int y, uint16_t iconColor, uint16_t backgroundColor) {
+void startTimerClockIcon(int x, int y, int widthAndHeight, uint16_t iconColor, uint16_t backgroundColor) {
 
   // Square
-  tft.fillRoundRect(x, y, 41, 41, 5, iconColor);
-  tft.fillRoundRect(x + 2, y + 2, 37, 37, 5, backgroundColor);  // X, Y, width, height, Radius, color
+  tft.fillRoundRect(x, y, widthAndHeight, widthAndHeight, 5, iconColor);
+  tft.fillRoundRect(x + 2, y + 2, widthAndHeight - 4, widthAndHeight - 4, 5, backgroundColor);  // X, Y, width, height, Radius, color
 
   // Abowe circle
-  tft.fillRect(x + 15, y + 5, 10, 2, iconColor);
-  tft.fillRect(x + 19, y + 7, 2, 2, iconColor);
+  tft.fillRect(x + 15, y + 5, widthAndHeight - 31, widthAndHeight - 39, iconColor);
+  tft.fillRect(x + 19, y + 7, widthAndHeight - 39, widthAndHeight - 39, iconColor);
 
   // On the side of the circle
-  tft.fillRect(x + 30, y + 11, 2, 2, iconColor);
-  tft.fillRect(x + 31, y + 12, 2, 2, iconColor);
-  tft.fillRect(x + 32, y + 13, 2, 2, iconColor);
+  tft.fillRect(x + 30, y + 11, widthAndHeight - 39, widthAndHeight - 39, iconColor);
+  tft.fillRect(x + 31, y + 12, widthAndHeight - 39, widthAndHeight - 39, iconColor);
+  tft.fillRect(x + 32, y + 13, widthAndHeight - 39, widthAndHeight - 39, iconColor);
   
   //tft.fillRect(40, 15, 2, 2, iconColor);
 
   // Circles
-  tft.drawCircle(x + 20, y + 21, 12, iconColor);
-  tft.drawCircle(x + 20, y + 21, 11, iconColor);
-  tft.drawCircle(x + 20, y + 21, 3, iconColor);
-  tft.drawCircle(x + 20, y + 21, 2, iconColor);
-  tft.drawCircle(x + 20, y + 21, 1, iconColor);
-  tft.drawCircle(x + 20, y + 21, 0, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - 29, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - 30, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - 38, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - 39, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - 40, iconColor);
+  tft.drawCircle(x + 20, y + 21, widthAndHeight - widthAndHeight, iconColor);
 
   // clock pointer
-  tft.fillRect(x + 19, y + 13, 2, 10, iconColor);
-  tft.fillRect(x + 19, y + 20, 3, 3, iconColor);
+  tft.fillRect(x + 19, y + 13, widthAndHeight - 39, widthAndHeight - 31, iconColor);
+  tft.fillRect(x + 19, y + 20, widthAndHeight - 38, widthAndHeight - 38, iconColor);
   
 }
 
