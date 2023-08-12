@@ -74,10 +74,10 @@ void saveTimerData() {
   timerMinute = menuValue;
   setTimeTimerMinute = false;
   showMinutes(timerMinute, 150, 94);
-  setHumidityPercentMinAndMax();
+  //setHumidityPercentMinAndMax();
 }
 
-void setHumidityPercentMinAndMax() {
+/*void setHumidityPercentMinAndMax() {
   selectedMenu = 8;
   menuValue = minPercent;
   waterDropIcon(10, 130, 8, BLACK);
@@ -109,9 +109,9 @@ void saveHumidityMaxPercent() {
   startMaxPercentBlinking = false;
   maxPercent = menuValue;
   showMaxPercent(maxPercent, 180, 139);
-  setDaysToIrrigate();
+  //setDaysToIrrigate();
 }
-
+*/
 void setDaysToIrrigate() {
   selectedMenu = 10;
   menuValue = 0;

@@ -29,13 +29,17 @@ void areaSettingsExecutionAction() {
       startScreen();
       break;
     case 1:
-      programSettings(1);
+      setSoilmoistureValue();
       break;
     case 2:
-      programSettings(2);
+      programSettings(1);
       break;
     case 3:
+      programSettings(2);
+      break;
+    case 4:
       programSettings(3);
       break;
+
   }
 }

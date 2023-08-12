@@ -10,14 +10,15 @@ void areaView() {
   hourglassIcon(10, 130, BLACK, GRAY);
   calendarIcon(10, 172, BLACK, GRAY);
 
-  
-  
   tft.fillRect(250, 90, 50, 40, BLACK);
   tft.fillRect(252, 92, 46, 36, GRAY);
   tft.setTextSize(3);
   tft.setTextColor(BLACK);
-  //tft.setCursor(90, 100);
-  //tft.print(":");
+
+  tft.setTextSize(3);
+  tft.setTextColor(BLACK);
+  tft.setCursor(278, 100);
+  tft.print(currentIndex + 1);
   tft.setCursor(258, 100);
   tft.print("P");
 }
@@ -94,7 +95,7 @@ void displayStartHours(int selectedArea, int selectedProgram) {
 int displayStartMinutes(int selectedArea, int selectedProgram) {
   tft.fillRect(120, 97, 40, 30, GRAY);
   int testMinute = areaViews[selectedArea].programAreas[selectedProgram].startTime.minute();
-  
+
   if (testMinute < 10) {
     tft.setCursor(120, 97);
     tft.print("0");
@@ -108,7 +109,7 @@ int displayStartMinutes(int selectedArea, int selectedProgram) {
 
 void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
   tft.fillRect(60, 139, 40, 30, GRAY);
-  
+
   tft.setTextSize(3);
   if (timerHour < 10) {
     tft.setCursor(60, 139);
@@ -129,7 +130,7 @@ void displayIrrigationTimerHours(int selectedArea, int selectedProgram) {
 
 void displayIrrigationTimerMinutes(int selectedArea, int selectedProgram) {
   tft.fillRect(160, 139, 40, 30, GRAY);
-  
+
   tft.setTextSize(3);
   if (timerMinute < 10) {
     tft.setCursor(160, 139);

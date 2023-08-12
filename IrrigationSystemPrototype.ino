@@ -173,6 +173,7 @@ int selectedAutoRow = 0;
 // Auto select program variables
 char* selectProgramMenuItems[] = {
   "Tillbaka         ",
+  "Stall in procent  ",
   "Program 1 ",
   "Program 2 ",
   "Program 3 ",
@@ -303,10 +304,15 @@ ProgramArea* programAreas[numProgramArea];
 class AreaView {
   public:
     String areaViewName;
+    int soilmoistureValueMin;
+    int soilmoistureValueMax;
     ProgramArea programAreas[numProgramArea];
 
     AreaView() {
       areaViewName = "";
+      soilmoistureValueMin = 0;
+      soilmoistureValueMax = 0;
+      
       for (int i = 0; i < numProgramArea; i++) {
         programAreas[i] = ProgramArea();
       }
@@ -343,7 +349,8 @@ int dispenserRunTimeRemainderMinutes = 0;
 unsigned long startTimeDispenser = 0;
 
 const int textCount = 3;
-const unsigned long interval = 2000; // 1 sekund
+const unsigned long interval = 5000; // 5 sekunder
 
 unsigned long previousMillis = 0;
 int currentIndex = 0;
+int oldIndex = 0;
