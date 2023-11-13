@@ -207,7 +207,8 @@ void menuBtnPressSelecting() {
       if (menuValue >= 0 && menuValue <= 6) {
         selectDay();
       } else {
-        saveIrrigationData();
+        //saveIrrigationData();
+        saveSelectedDays();
       }
       
       break;

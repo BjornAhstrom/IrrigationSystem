@@ -1,20 +1,23 @@
 void areaView() {
+  menuView = false;
   //tft.fillScreen(GRAY);
   tft.setTextSize(3);
 
   //tft.fillRect(228, 86, 88, 30, BLACK);
   //tft.fillRect(230, 88, 84, 26, GRAY);
 
-  mockData();
+  
   startTimerClockIcon(10, 88, 41, BLACK, GRAY);
   hourglassIcon(10, 130, BLACK, GRAY);
   calendarIcon(10, 172, BLACK, GRAY);
 
-  tft.fillRect(250, 90, 50, 40, BLACK);
+  /*tft.fillRect(250, 90, 50, 40, BLACK);
   tft.fillRect(252, 92, 46, 36, GRAY);
   tft.setTextSize(3);
-  tft.setTextColor(BLACK);
+  tft.setTextColor(BLACK);*/
 
+  tft.fillRect(250, 90, 50, 40, BLACK);
+  tft.fillRect(252, 92, 46, 36, GRAY);
   tft.setTextSize(3);
   tft.setTextColor(BLACK);
   tft.setCursor(278, 100);
@@ -30,9 +33,10 @@ void splitMilliseconds(long milliseconds, int &hours, int &minutes) {
 }
 
 void displayMenuText() {
-  tft.fillRect(60, 97, 200, 30, GRAY);
-  tft.fillRect(60, 139, 200, 30, GRAY);
-  tft.fillRect(58, 85, 320, 220, GRAY);
+  menuView = true;
+  tft.fillRect(0, 85, 320, 220, GRAY);
+  //tft.fillRect(60, 139, 200, 30, MAGENTA);
+  //tft.fillRect(58, 85, 320, 220, GRAY);
   tft.setTextSize(3);
   tft.setTextColor(BLACK);
   tft.setCursor(120, 100);
@@ -65,7 +69,7 @@ void selectedDay(int startX, int endX, int y, int boxHeight, int boxWidth, int n
   for (int i = 0; i < numDays; i++) {
     int x = startX + padding * (i + 1) + i * boxWidth; // Calculate X position for each box
 
-    if (areaViews[selectedArea].programAreas[0].daysToTurnOn.days[i]) {
+    if (areaViews[selectedArea].daysToTurnOn.days[i]) {
       // Draw the box
       tft.fillRect(x, y, boxWidth, boxHeight, color);
     } else {
@@ -93,7 +97,7 @@ void displayStartHours(int selectedArea, int selectedProgram) {
 }
 
 int displayStartMinutes(int selectedArea, int selectedProgram) {
-  tft.fillRect(120, 97, 40, 30, GRAY);
+  tft.fillRect(120, 97, 70, 30, GRAY);
   int testMinute = areaViews[selectedArea].programAreas[selectedProgram].startTime.minute();
 
   if (testMinute < 10) {
@@ -160,41 +164,53 @@ void mockData() {
     areaViews[0].programAreas[0].daysToTurnOn.days[5] = true;
     areaViews[0].programAreas[0].daysToTurnOn.days[6] = true;*/
 
-  areaViews[1].programAreas[0].startTime = DateTime(0, 0, 0, 3, 15, 0);
-  areaViews[1].programAreas[0].lenghtOfIrrigation = 1080000;
-  areaViews[1].programAreas[0].daysToTurnOn.days[0] = true;
-  areaViews[1].programAreas[0].daysToTurnOn.days[1] = true;
-  areaViews[1].programAreas[0].daysToTurnOn.days[6] = true;
+  areaViews[0].programAreas[0].startTime = DateTime(0, 0, 0, 3, 15, 0);
+  areaViews[0].programAreas[0].lenghtOfIrrigation = 1080000;
+  areaViews[0].daysToTurnOn.days[0] = true;
+  areaViews[0].daysToTurnOn.days[1] = true;
+  areaViews[0].daysToTurnOn.days[6] = true;
 
-  areaViews[1].programAreas[1].startTime = DateTime(0, 0, 0, 12, 0, 0);
-  areaViews[1].programAreas[1].lenghtOfIrrigation = 2080000;
-  areaViews[1].programAreas[1].daysToTurnOn.days[2] = true;
-  areaViews[1].programAreas[1].daysToTurnOn.days[3] = true;
-  areaViews[1].programAreas[1].daysToTurnOn.days[7] = true;
+  areaViews[0].programAreas[1].startTime = DateTime(0, 0, 0, 12, 0, 0);
+  areaViews[0].programAreas[1].lenghtOfIrrigation = 2080000;
+  areaViews[0].daysToTurnOn.days[2] = true;
+  areaViews[0].daysToTurnOn.days[3] = true;
+  areaViews[0].daysToTurnOn.days[7] = true;
 
-  areaViews[1].programAreas[2].startTime = DateTime(0, 0, 0, 21, 30, 0);
-  areaViews[1].programAreas[2].lenghtOfIrrigation = 8880000;
-  areaViews[1].programAreas[2].daysToTurnOn.days[1] = true;
-  areaViews[1].programAreas[2].daysToTurnOn.days[4] = true;
-  areaViews[1].programAreas[2].daysToTurnOn.days[5] = true;
+  areaViews[0].programAreas[2].startTime = DateTime(0, 0, 0, 21, 30, 0);
+  areaViews[0].programAreas[2].lenghtOfIrrigation = 8880000;
+  areaViews[0].daysToTurnOn.days[1] = true;
+  areaViews[0].daysToTurnOn.days[4] = true;
+  areaViews[0].daysToTurnOn.days[5] = true;
 
   areaViews[2].programAreas[0].startTime = DateTime(0, 0, 0, 22, 18, 0);
   areaViews[2].programAreas[0].lenghtOfIrrigation = 960000;
-  areaViews[2].programAreas[0].daysToTurnOn.days[1] = true;
-  areaViews[2].programAreas[0].daysToTurnOn.days[4] = true;
-  areaViews[2].programAreas[0].daysToTurnOn.days[5] = true;
+  areaViews[2].daysToTurnOn.days[1] = true;
+  areaViews[2].daysToTurnOn.days[4] = true;
+  areaViews[2].daysToTurnOn.days[5] = true;
+
+  areaViews[2].programAreas[1].startTime = DateTime(0, 0, 0, 5, 33, 0);
+  areaViews[2].programAreas[1].lenghtOfIrrigation = 60000;
+  areaViews[2].daysToTurnOn.days[1] = true;
+  areaViews[2].daysToTurnOn.days[4] = true;
+  areaViews[2].daysToTurnOn.days[5] = true;
+
+  areaViews[2].programAreas[2].startTime = DateTime(0, 0, 0, 17, 49, 0);
+  areaViews[2].programAreas[2].lenghtOfIrrigation = 260000;
+  areaViews[2].daysToTurnOn.days[1] = true;
+  areaViews[2].daysToTurnOn.days[4] = true;
+  areaViews[2].daysToTurnOn.days[5] = true;
 
   areaViews[3].programAreas[0].startTime = DateTime(0, 0, 0, 3, 15, 0);
   areaViews[3].programAreas[0].lenghtOfIrrigation = 9000000;
-  areaViews[3].programAreas[0].daysToTurnOn.days[1] = true;
-  areaViews[3].programAreas[0].daysToTurnOn.days[3] = true;
-  areaViews[3].programAreas[0].daysToTurnOn.days[5] = true;
+  areaViews[3].daysToTurnOn.days[1] = true;
+  areaViews[3].daysToTurnOn.days[3] = true;
+  areaViews[3].daysToTurnOn.days[5] = true;
 
   areaViews[4].programAreas[0].startTime = DateTime(0, 0, 0, 12, 20, 0);
   areaViews[4].programAreas[0].lenghtOfIrrigation = 4500000;
-  areaViews[4].programAreas[0].daysToTurnOn.days[4] = true;
-  areaViews[4].programAreas[0].daysToTurnOn.days[5] = true;
-  areaViews[4].programAreas[0].daysToTurnOn.days[6] = true;
+  areaViews[4].daysToTurnOn.days[4] = true;
+  areaViews[4].daysToTurnOn.days[5] = true;
+  areaViews[4].daysToTurnOn.days[6] = true;
 
   /*areaViews[1].programAreas[2].startTime = DateTime(0, 0, 0, 21, 30, 0);
     areaViews[1].programAreas[2].lenghtOfIrrigation = 50;

@@ -32,13 +32,16 @@ void areaSettingsExecutionAction() {
       setSoilmoistureValue();
       break;
     case 2:
-      programSettings(1);
+      setDaysToIrrigate();
       break;
     case 3:
-      programSettings(2);
+      programSettings(selectBoxIndex, 0);
       break;
     case 4:
-      programSettings(3);
+      programSettings(selectBoxIndex, 1);
+      break;
+    case 5:
+      programSettings(selectBoxIndex, 2);
       break;
 
   }

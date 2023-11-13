@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include "RTClib.h"
-#include <DHT.h> 
+#include <DHT.h>
 
 //Temperature sensor variables
 #define DHTPIN 31     // what pin we're connected to
@@ -174,6 +174,7 @@ int selectedAutoRow = 0;
 char* selectProgramMenuItems[] = {
   "Tillbaka         ",
   "Stall in procent  ",
+  "Stall in dagar  ",
   "Program 1 ",
   "Program 2 ",
   "Program 3 ",
@@ -278,22 +279,13 @@ bool isScheduledTime(const DateTime& currentTime) {
 class ProgramArea {
   public:
     String programName;
-    int soilmoistureValueMin;
-    int soilmoistureValueMax;
     DateTime startTime;
     unsigned long lenghtOfIrrigation;
-    DaysToTurnOn daysToTurnOn;
-
+    
     ProgramArea() {
       programName = "";
-      soilmoistureValueMin = 0;
-      soilmoistureValueMax = 0;
       startTime = DateTime();
       lenghtOfIrrigation = 0;
-
-      for (int i = 0; i < 7; i++) {
-        daysToTurnOn.days[i] = false;
-      }
     }
 
 };
@@ -306,13 +298,18 @@ class AreaView {
     String areaViewName;
     int soilmoistureValueMin;
     int soilmoistureValueMax;
+    DaysToTurnOn daysToTurnOn;
     ProgramArea programAreas[numProgramArea];
 
     AreaView() {
       areaViewName = "";
       soilmoistureValueMin = 0;
       soilmoistureValueMax = 0;
-      
+
+      for (int i = 0; i < 7; i++) {
+        daysToTurnOn.days[i] = false;
+      }
+
       for (int i = 0; i < numProgramArea; i++) {
         programAreas[i] = ProgramArea();
       }
@@ -322,6 +319,7 @@ class AreaView {
 int amountOfArea = 5;
 const int amountOfAreaViews = amountOfArea;
 int selectBoxIndex = 0;
+int selectProgramIndex = 0;
 
 AreaView* areaViews;
 bool insideAreaSettings = false;
@@ -337,6 +335,7 @@ bool startMinuteBlinking = false;
 bool startMinPercentBlinking = false;
 bool startMaxPercentBlinking = false;
 bool blinkingHumidityPercent = false;
+bool menuView = false;
 int startHour = 0;
 int startMinute = 0;
 int timerHour = 0;
