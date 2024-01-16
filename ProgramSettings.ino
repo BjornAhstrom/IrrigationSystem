@@ -84,8 +84,48 @@ void saveTimerData() {
   timerMinute = menuValue;
   setTimeTimerMinute = false;
   showMinutes(timerMinute, 150, 94);
-  saveIrrigationData();
+  saveButton();
 }
+
+void saveButton() {
+  blinkingSaveBtn = true;
+  selectedMenu = 19;
+  startSaveBtnToBlink();
+  
+}
+
+void startSaveBtnToBlink() {
+
+  if (blinkingSaveBtn) {
+    if (millis() - runTime >= 500) {
+      runTime = millis();
+
+      if (startBlinkingBtn) {
+        showSaveBtn();
+      } else {
+        hideSaveBtn();
+      }
+      startBlinkingBtn = !startBlinkingBtn;
+    }
+  }
+}
+
+void showSaveBtn() {
+  tft.fillRect(85, 210, 150, 30, BLACK);
+  tft.setTextSize(2);
+  tft.setCursor(130, 220);
+  tft.setTextColor(WHITE);
+  tft.print("Spara");
+}
+
+void hideSaveBtn() {
+  tft.fillRect(85, 210, 150, 30, LIGHTGRAY);
+  tft.setTextSize(2);
+  tft.setCursor(130, 220);
+  tft.setTextColor(WHITE);
+  tft.print("Spara");
+}
+
 
 /*void setHumidityPercentMinAndMax() {
   selectedMenu = 8;
@@ -129,6 +169,7 @@ long convertToMilliseconds(int hours, int minutes) {
 }
 
 void saveIrrigationData() {
+  blinkingSaveBtn = false;
   // Saving data
   areaViews[selectBoxIndex].programAreas[selectProgramIndex].startTime = DateTime(0, 0, 0, startHour, startMinute, 0);
   areaViews[selectBoxIndex].programAreas[selectProgramIndex].lenghtOfIrrigation = convertToMilliseconds(timerHour, timerMinute);

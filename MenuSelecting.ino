@@ -195,7 +195,7 @@ void menuBtnPressSelecting() {
       setTimerMinute();
       break;
     case 7:
-      saveTimerData();
+    saveTimerData();
       break;
     case 8:
       saveHumidityMinPercent();
@@ -238,6 +238,7 @@ void menuBtnPressSelecting() {
       areaSettingsExecutionAction();
       break;
     case 19:
+      saveIrrigationData();
       break;
     case 20:
       break;

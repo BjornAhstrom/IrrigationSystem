@@ -6,6 +6,7 @@ void loop() {
   startSetTimeTimerMinuteToBlink();
   startMinPercentToBlink();
   startMaxPercentToBlink();
+  startSaveBtnToBlink();
   /*startBlinkingTime();
     startBlinkingHour();
     startBlinkingMinute();
