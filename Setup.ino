@@ -7,11 +7,12 @@ void setup() {
   //  setTime(15, 10, 38, 26, 6, 23);
   setupTempSensor();
   RTCSetup();
-  mockData();
+  //mockData();
   //lcdScreenSetup();
   tftScreenSetup();
   rotaryEncoderSetup();
-  logoScreen();
+  startScreen();
+  //logoScreen();
   //mainMenu();
   //startScreen();
 }

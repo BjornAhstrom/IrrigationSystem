@@ -20,7 +20,7 @@ const byte celsiusChar[8] = {
   B01001,
   B00110,
   B00000,
-  B00000
+  B00000,
 };
 
 // TFT screen variables
@@ -336,6 +336,7 @@ bool startMinPercentBlinking = false;
 bool startMaxPercentBlinking = false;
 bool blinkingHumidityPercent = false;
 bool menuView = false;
+bool runStartScreenOnce = false;
 int startHour = 0;
 int startMinute = 0;
 int timerHour = 0;

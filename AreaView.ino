@@ -34,6 +34,7 @@ void splitMilliseconds(long milliseconds, int &hours, int &minutes) {
 
 void displayMenuText() {
   menuView = true;
+  runStartScreenOnce = false;
   tft.fillRect(0, 85, 320, 220, GRAY);
   //tft.fillRect(60, 139, 200, 30, MAGENTA);
   //tft.fillRect(58, 85, 320, 220, GRAY);

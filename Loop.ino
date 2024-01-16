@@ -44,6 +44,10 @@ void loop() {
         }
       }
     }
+  } else if (runStartScreenOnce && !insideMenu && !insideAreaSettings) {
+      Serial.println("Displaying startScreen");
+      areaView();
+      runStartScreenOnce = false;
   }
 }
 

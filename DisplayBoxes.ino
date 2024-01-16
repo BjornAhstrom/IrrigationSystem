@@ -54,6 +54,7 @@ void selectedBox(int startX, int endX, int y, int boxHeight, int boxWidth, int n
         displayMenuText();
       } else {
         openMainMenu = false;
+        runStartScreenOnce = true;
       }
 
     } else {

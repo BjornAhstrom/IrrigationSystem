@@ -20,6 +20,7 @@ void mainMenuExecutionAction() {
   switch (menuValue) {
     case 0:
       startScreen();
+      selectBox();
       break;
     case 1:
       autoIrrigationMenu();

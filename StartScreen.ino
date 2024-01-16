@@ -1,5 +1,4 @@
 void startScreen() {
-  
   openMainMenu = false;
   insideMenu = false;
   insideAreaSettings = false;
