@@ -59,5 +59,5 @@ void selectDay() {
 }
 
 void saveSelectedDays() {
-  areaSettings(selectBoxIndex);
+  startScreen();
 }
