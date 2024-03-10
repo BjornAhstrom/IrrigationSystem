@@ -15,4 +15,10 @@ void setup() {
   //logoScreen();
   //mainMenu();
   //startScreen();
+
+  for (int i = 0; i < numRelays; i++) {
+    pinMode(relays[i], OUTPUT);
+  }
+
+  
 }

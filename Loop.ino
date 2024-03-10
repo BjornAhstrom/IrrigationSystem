@@ -50,6 +50,12 @@ void loop() {
       areaView();
       runStartScreenOnce = false;
   }
+
+  // for (int i = 0; i < numRelays; i++) {
+  //   digitalWrite(relays[i], ON);
+  //   delay(500);
+  //   digitalWrite(relays[i], OFF);
+  // }
 }
 
 

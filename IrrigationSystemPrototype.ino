@@ -111,8 +111,12 @@ int seconds;
 char daysOfTheWeek[7][12] = {"So", "Mo", "Ti", "On", "To", "Fr", "Lo"};
 
 // Relay variables
-const int relays[] = {51, 52, 53, 54, 55};
+const int relays[] = {22, 23, 24, 25, 26};
 int numRelays = sizeof(relays) / sizeof(relays[0]);
+
+// Sensor variables
+const int sensors[] = {A5, A6, A7, A8, A9};
+const int numSensors = sizeof(sensors) / sizeof(sensors[0]);
 
 // Sprinkler variables
 int selectedSprinkler = 0;
@@ -204,6 +208,9 @@ char* settingsMenuItem[] = {
   "Tillbaka          ",
   "Stall in procent  ",
 };
+
+// Auto irrigation variables
+bool autoIrrigationOn = false;
 
 // Irrigation days variables
 int numOfIrrigationDaysRows = 10;
